@@ -1,6 +1,6 @@
-package StudyCommunity.post.entity;
+package StudyCommunity.board.entity;
 
-import StudyCommunity.Member.entity.Member;
+import StudyCommunity.member.entity.Member;
 import StudyCommunity.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -10,12 +10,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity(name = "POST")
-public class Post extends Auditable {
+@Entity(name = "BOARD")
+public class Board extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long postId;
+    private Long boardId;
 
     @Column
     private String title;
@@ -32,15 +32,15 @@ public class Post extends Auditable {
 
 
     // 게시글 상태
-    public enum PostStatus {
+    @Getter
+    public enum BoardStatus {
         QUESTION_ANSWER_POST("질문&답변 게시글"),
         THINKING_POST("고민 게시글"),
         STUDY_POST("스터디 게시글");
 
-        @Getter
         private final String status;
 
-        PostStatus(String status) {
+        BoardStatus(String status) {
             this.status = status;
         }
 

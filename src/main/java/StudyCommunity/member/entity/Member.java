@@ -1,4 +1,4 @@
-package StudyCommunity.Member.entity;
+package StudyCommunity.member.entity;
 
 import StudyCommunity.audit.Auditable;
 import jakarta.persistence.*;

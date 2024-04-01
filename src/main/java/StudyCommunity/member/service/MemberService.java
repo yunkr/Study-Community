@@ -1,10 +1,10 @@
-package StudyCommunity.Member.service;
+package StudyCommunity.member.service;
 
 import StudyCommunity.exception.BusinessLogicException;
 import StudyCommunity.exception.ExceptionCode;
-import StudyCommunity.Member.entity.Member;
-import StudyCommunity.Member.mapper.MemberMapper;
-import StudyCommunity.Member.repository.MemberRepository;
+import StudyCommunity.member.entity.Member;
+import StudyCommunity.member.mapper.MemberMapper;
+import StudyCommunity.member.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,6 +32,7 @@ public class MemberService {
     // 회원 수정
     public Member updateMember(Member member) {
         Member findMember = findMember(member.getMemberId());
+
         findMember.setEmail(member.getEmail());
         findMember.setNickname(member.getNickname());
 
@@ -42,12 +43,18 @@ public class MemberService {
     public Member findMember(long memberId) {
         Member findMember = memberRepository.findById(memberId).orElseThrow(() ->
                 new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
+
         return findMember;
     }
 
     // 모든 회원 조회
     public List<Member> getAllMembers() {
         return memberRepository.findAll();
+    }
+
+    // 회원 삭제
+    public void deleteMember(Long memberId) {
+        memberRepository.deleteById(memberId);
     }
 
 

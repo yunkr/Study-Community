@@ -1,10 +1,9 @@
-package StudyCommunity.Member.dto;
+package StudyCommunity.member.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 
 import java.time.LocalDateTime;
@@ -23,7 +22,10 @@ public class MemberPostDto {
     @NotBlank
     private String nickname;
 
-    private LocalDateTime modifiedAt;
+
     private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
+    private String createdBy;
+    private String modifiedBy;
 
 }

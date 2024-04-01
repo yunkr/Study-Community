@@ -34,7 +34,7 @@ public abstract class Auditable {
     @Column(name = "created_by", updatable = false)
     private String createdBy;
 
-    //수정자
+    // 수정자
     @LastModifiedBy
     @Column(name = "modified_by")
     private String modifiedBy;
