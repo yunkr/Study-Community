@@ -1,7 +1,6 @@
 package StudyCommunity.board.dto;
 
 import StudyCommunity.board.entity.Board;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -27,5 +26,6 @@ public class BoardResponseDto {
     private LocalDateTime modifiedAt;
     private String createdBy;
     private String modifiedBy;
+
 
 }

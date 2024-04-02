@@ -7,7 +7,6 @@ import StudyCommunity.board.entity.Board;
 import StudyCommunity.board.mapper.BoardMapper;
 import StudyCommunity.board.service.BoardService;
 import StudyCommunity.dto.SingleResponseDto;
-import StudyCommunity.member.dto.MemberPatchDto;
 import StudyCommunity.utils.UriCreator;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;

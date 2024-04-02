@@ -15,14 +15,13 @@ import java.util.Optional;
 public class BoardService {
 
     private final BoardRepository boardRepository;
-    private final BoardService boardService;
     private final MemberService memberService;
 
-    public BoardService(BoardRepository boardRepository, BoardService boardService, MemberService memberService) {
+    public BoardService(BoardRepository boardRepository, MemberService memberService) {
         this.boardRepository = boardRepository;
-        this.boardService = boardService;
         this.memberService = memberService;
     }
+
 
     // 게시글 등록
     public Board createBoard(Board board) {

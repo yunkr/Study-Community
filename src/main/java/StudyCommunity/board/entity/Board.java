@@ -1,7 +1,7 @@
 package StudyCommunity.board.entity;
 
-import StudyCommunity.member.entity.Member;
 import StudyCommunity.audit.Auditable;
+import StudyCommunity.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
