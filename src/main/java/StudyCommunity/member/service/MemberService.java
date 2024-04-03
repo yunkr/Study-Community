@@ -14,11 +14,9 @@ import java.util.Optional;
 public class MemberService {
 
     private final MemberRepository memberRepository;
-    private final MemberMapper memberMapper;
 
-    public MemberService(MemberRepository memberRepository, MemberMapper memberMapper) {
+    public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
-        this.memberMapper = memberMapper;
     }
 
     // 회원 등록

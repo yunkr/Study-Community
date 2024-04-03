@@ -1,8 +1,6 @@
 package StudyCommunity.audit;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -18,35 +16,34 @@ import java.time.format.DateTimeFormatter;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class Auditable {
-
-    // 생성일자
     @CreatedDate
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-    // 수정일자
     @LastModifiedDate
     @Column(name = "LAST_MODIFIED_AT")
-    private LocalDateTime modifiedAt;
+    private LocalDateTime lastModifiedAt;
 
-    // 생성자
+    /*
     @CreatedBy
     @Column(name = "created_by", updatable = false)
     private String createdBy;
 
-    // 수정자
     @LastModifiedBy
-    @Column(name = "modified_by")
-    private String modifiedBy;
+    @Column(name = "last_modified_by")
+    private String lastModifiedBy;
+     */
 
-    public String formatCreatedAt() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        return createdAt.format(formatter);
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        lastModifiedAt = LocalDateTime.now();
+
     }
 
-    public String formatModifiedAt() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        return modifiedAt.format(formatter);
+    @PreUpdate
+    protected void onUpdate() {
+        lastModifiedAt = LocalDateTime.now();
     }
 
 }

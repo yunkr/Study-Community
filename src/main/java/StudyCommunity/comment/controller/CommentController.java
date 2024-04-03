@@ -34,7 +34,7 @@ public class CommentController {
 
 
     // 댓글 등록(Post)
-    @PostMapping("/{comment-id}")
+    @PostMapping
     public ResponseEntity<?> postComment(@Valid @RequestBody CommentPostDto requestBody) {
         Comment comment = commentService.createComment(commentMapper.commentPostDtoToComment(requestBody));
         URI location = UriCreator.createUri(COMMENT_DEFAULT_URL, comment.getCommentId());

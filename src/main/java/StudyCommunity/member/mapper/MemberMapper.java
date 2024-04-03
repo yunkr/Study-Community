@@ -11,11 +11,43 @@ import java.util.List;
 @Mapper
 public interface MemberMapper {
 
-    Member memberPostDtotoMember(MemberPostDto requestBody);
+    default Member memberPostDtoToMember(MemberPostDto memberPostDto) {
 
-    Member memberPatchDtotoMember(MemberPatchDto requestBody);
+        Member member = new Member();
 
-    MemberResponseDto memberToMemberResponseDto(Member member);
+        member.setEmail(memberPostDto.getEmail());
+        member.setPassword(memberPostDto.getPassword());
+        member.setNickname(memberPostDto.getNickname());
+
+        return member;
+    }
+
+    default Member memberPatchDtoToMember(MemberPatchDto memberPatchDto) {
+
+        Member member = new Member();
+
+        member.setMemberId(memberPatchDto.getMemberId());
+        member.setEmail(memberPatchDto.getEmail());
+        member.setNickname(memberPatchDto.getNickname());
+
+        return member;
+    }
+
+    default MemberResponseDto memberToMemberResponseDto(Member member) {
+
+        MemberResponseDto memberResponseDto = new MemberResponseDto();
+
+        memberResponseDto.setMemberId(member.getMemberId());
+        memberResponseDto.setEmail(member.getEmail());
+        memberResponseDto.setNickname(member.getNickname());
+        memberResponseDto.setCreatedAt(member.getCreatedAt());
+        memberResponseDto.setModifiedAt(member.getLastModifiedAt());
+//        memberResponseDto.setCreatedBy(memberResponseDto.getCreatedBy());
+//        memberResponseDto.setLastModifiedBy(member.getLastModifiedBy());
+
+        return memberResponseDto;
+
+    }
 
     List<MemberResponseDto> membersToMemberResponseDtos(List<Member> members);
 

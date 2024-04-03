@@ -12,6 +12,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -19,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/members")
+@Validated
 public class MemberController {
 
     private final static String MEMBER_DEFAULT_URL = "/members";
@@ -33,7 +35,7 @@ public class MemberController {
     // 회원 등록(Post)
     @PostMapping
     public ResponseEntity<?> postMember(@Valid @RequestBody MemberPostDto requestBody) {
-        Member member = memberService.createMember(memberMapper.memberPostDtotoMember(requestBody));
+        Member member = memberService.createMember(memberMapper.memberPostDtoToMember(requestBody));
         URI location = UriCreator.createUri(MEMBER_DEFAULT_URL, member.getMemberId());
 
         return ResponseEntity.created(location).build();
@@ -44,7 +46,7 @@ public class MemberController {
     public ResponseEntity<?> patchMember(@PathVariable("member-id") @Positive long memberId,
                                          @Valid @RequestBody MemberPatchDto requestBody) {
         requestBody.setMemberId(memberId);
-        Member member = memberService.updateMember(memberMapper.memberPatchDtotoMember(requestBody));
+        Member member = memberService.updateMember(memberMapper.memberPatchDtoToMember(requestBody));
         MemberResponseDto response = memberMapper.memberToMemberResponseDto(member);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
