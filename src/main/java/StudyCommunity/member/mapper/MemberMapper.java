@@ -41,7 +41,7 @@ public interface MemberMapper {
         memberResponseDto.setEmail(member.getEmail());
         memberResponseDto.setNickname(member.getNickname());
         memberResponseDto.setCreatedAt(member.getCreatedAt());
-        memberResponseDto.setModifiedAt(member.getLastModifiedAt());
+        memberResponseDto.setLastModifiedAt(member.getLastModifiedAt());
 //        memberResponseDto.setCreatedBy(memberResponseDto.getCreatedBy());
 //        memberResponseDto.setLastModifiedBy(member.getLastModifiedBy());
 
