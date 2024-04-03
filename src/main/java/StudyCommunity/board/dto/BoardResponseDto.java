@@ -24,8 +24,9 @@ public class BoardResponseDto {
 
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
-    private String createdBy;
-    private String modifiedBy;
+
+//    private String createdBy;
+//    private String modifiedBy;
 
 
 }

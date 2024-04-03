@@ -22,6 +22,7 @@ public class MemberResponseDto {
 
     private LocalDateTime createdAt;
     private LocalDateTime lastModifiedAt;
+
 //    private String createdBy;
 //    private String lastModifiedBy;
 

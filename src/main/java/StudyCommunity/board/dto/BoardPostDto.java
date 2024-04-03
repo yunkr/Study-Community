@@ -26,7 +26,8 @@ public class BoardPostDto {
 
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
-    private String createdBy;
-    private String modifiedBy;
+
+//    private String createdBy;
+//    private String modifiedBy;
 
 }
