@@ -32,7 +32,7 @@ public class BoardController {
     }
 
     // 게시글 등록(Post)
-    @PostMapping("/{board-id}")
+    @PostMapping
     public ResponseEntity<?> postBoard(@Valid @RequestBody BoardPostDto requestBody) {
         Board board = boardService.createBoard(boardMapper.boardPostDtoToBoard(requestBody));
         URI location = UriCreator.createUri(BOARD_DEFAULT_URL, board.getBoardId());

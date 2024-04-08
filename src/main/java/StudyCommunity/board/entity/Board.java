@@ -27,9 +27,11 @@ public class Board extends Auditable {
     private String hashTag;
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
+    @Enumerated(EnumType.STRING)
+    private BoardStatus boardStatus;
 
     // 게시글 상태
     @Getter

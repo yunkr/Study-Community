@@ -1,21 +1,18 @@
-package StudyCommunity.board.dto;
+package StudyCommunity.onlinestudy.dto;
 
-import StudyCommunity.board.entity.Board;
 import StudyCommunity.member.entity.Member;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BoardPostDto {
+public class OnlineStudyPostDto {
 
     @Positive
     private long memberId;
@@ -24,24 +21,33 @@ public class BoardPostDto {
     private String title;
 
     @NotBlank
-    private String content;
+    private String topic;
 
-    private String hashTag;
+    @NotBlank
+    private String schedule;
 
-    // 게시글 상태
-    private Board.BoardStatus boardStatus;
+    @NotBlank
+    private String curriculum;
+
+    @NotBlank
+    private String personnel;
+
+    @NotBlank
+    private String introduction;
+
+    @NotBlank
+    private String precautions;
+
+    @NotBlank
+    private String apply;
 
 
     private LocalDateTime createdAt;
-    private LocalDateTime modifiedAt;
-
-//    private String createdBy;
-//    private String modifiedBy;
+    private LocalDateTime lastModifiedAt;
 
     public Member getMember() {
         Member member = new Member();
         member.setMemberId(memberId);
         return member;
     }
-
 }

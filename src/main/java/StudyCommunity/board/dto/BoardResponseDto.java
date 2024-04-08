@@ -3,12 +3,18 @@ package StudyCommunity.board.dto;
 import StudyCommunity.board.entity.Board;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class BoardResponseDto {
+
+    private long memberId;
 
     private long boardId;
 
