@@ -1,17 +1,18 @@
-package StudyCommunity.comment.dto;
+package StudyCommunity.studyComment.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
-public class CommentPatchDto {
+@NoArgsConstructor
+public class StudyCommentPatchDto {
 
-    @NotBlank
-    private long commentId;
+    private long studyCommentId;
 
     @NotBlank
     private String content;

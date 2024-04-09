@@ -61,14 +61,6 @@ public class PostService {
         postRepository.deleteById(postId);
     }
 
-    /*
-    // member 존재하는지 확인
-    public void verifyMember(Board board) {
-
-        Member member = memberService.findMember(board.getMember().getMemberId());
-        board.setMember(member);
-    }
-     */
 
     // member 존재하는지 확인
     public void verifyMember(Post post) {

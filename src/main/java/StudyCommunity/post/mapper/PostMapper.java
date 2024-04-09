@@ -33,6 +33,7 @@ public interface PostMapper {
         Post post = new Post();
 
         post.setPostId(postPatchDto.getPostId());
+
         post.setTitle(postPatchDto.getTitle());
         post.setContent(postPatchDto.getContent());
         post.setHashTag(postPatchDto.getHashTag());

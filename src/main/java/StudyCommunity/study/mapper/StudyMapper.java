@@ -53,6 +53,7 @@ public interface StudyMapper {
         StudyResponseDto studyResponseDto = new StudyResponseDto();
 
         studyResponseDto.setMemberId(study.getMember().getMemberId());
+
         studyResponseDto.setStudyId(study.getStudyId());
 
         studyResponseDto.setTitle(study.getTitle());

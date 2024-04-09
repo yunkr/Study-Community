@@ -1,8 +1,9 @@
-package StudyCommunity.comment.entity;
+package StudyCommunity.studyComment.entity;
 
 import StudyCommunity.audit.Auditable;
 import StudyCommunity.post.entity.Post;
 import StudyCommunity.member.entity.Member;
+import StudyCommunity.study.entity.Study;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,12 +12,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity(name = "COMMENT")
-public class Comment extends Auditable {
+@Entity(name = "STUDY_COMMENT")
+public class StudyComment extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long commentId;
+    private Long studyCommentId;
 
     @Column
     private String content;
@@ -26,7 +27,7 @@ public class Comment extends Auditable {
     private Member member;
 
     @ManyToOne
-    @JoinColumn(name = "board_id")
-    private Post post;
+    @JoinColumn(name = "study_id")
+    private Study study;
 
 }
