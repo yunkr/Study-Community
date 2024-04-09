@@ -1,7 +1,6 @@
 package StudyCommunity.studyComment.entity;
 
 import StudyCommunity.audit.Auditable;
-import StudyCommunity.post.entity.Post;
 import StudyCommunity.member.entity.Member;
 import StudyCommunity.study.entity.Study;
 import jakarta.persistence.*;

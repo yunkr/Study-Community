@@ -15,6 +15,7 @@ public class StudyCommentResponseDto {
 
     private long memberId;
     private long studyId;
+
     private long studyCommentId;
 
     private String content;

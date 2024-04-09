@@ -4,7 +4,6 @@ import StudyCommunity.exception.BusinessLogicException;
 import StudyCommunity.exception.ExceptionCode;
 import StudyCommunity.member.entity.Member;
 import StudyCommunity.member.service.MemberService;
-import StudyCommunity.post.entity.Post;
 import StudyCommunity.study.entity.Study;
 import StudyCommunity.study.service.StudyService;
 import StudyCommunity.studyComment.entity.StudyComment;
