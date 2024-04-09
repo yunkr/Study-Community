@@ -1,7 +1,7 @@
 package StudyCommunity.comment.service;
 
-import StudyCommunity.board.entity.Board;
-import StudyCommunity.board.service.BoardService;
+import StudyCommunity.post.entity.Post;
+import StudyCommunity.post.service.PostService;
 import StudyCommunity.comment.entity.Comment;
 import StudyCommunity.comment.repository.CommentRepository;
 import StudyCommunity.exception.BusinessLogicException;
@@ -18,12 +18,12 @@ public class CommentService {
 
     private final CommentRepository commentRepository;
     private final MemberService memberService;
-    private final BoardService boardService;
+    private final PostService postService;
 
-    public CommentService(CommentRepository commentRepository, MemberService memberService, BoardService boardService) {
+    public CommentService(CommentRepository commentRepository, MemberService memberService, PostService postService) {
         this.commentRepository = commentRepository;
         this.memberService = memberService;
-        this.boardService = boardService;
+        this.postService = postService;
     }
 
 
@@ -72,8 +72,8 @@ public class CommentService {
         comment.setMember(member);
 
         // board 존재하는지 확인
-        Board board = boardService.findBoard(comment.getBoard().getBoardId());
-        comment.setBoard(board);
+        Post post = postService.findPost(comment.getPost().getPostId());
+        comment.setPost(post);
     }
 
     // Comment 존재하는지 확인

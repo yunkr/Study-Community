@@ -1,7 +1,7 @@
 package StudyCommunity.comment.entity;
 
 import StudyCommunity.audit.Auditable;
-import StudyCommunity.board.entity.Board;
+import StudyCommunity.post.entity.Post;
 import StudyCommunity.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -27,6 +27,6 @@ public class Comment extends Auditable {
 
     @ManyToOne
     @JoinColumn(name = "board_id")
-    private Board board;
+    private Post post;
 
 }

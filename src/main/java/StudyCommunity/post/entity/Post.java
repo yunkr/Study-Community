@@ -1,4 +1,4 @@
-package StudyCommunity.board.entity;
+package StudyCommunity.post.entity;
 
 import StudyCommunity.audit.Auditable;
 import StudyCommunity.member.entity.Member;
@@ -10,12 +10,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity(name = "BOARD")
-public class Board extends Auditable {
+@Entity(name = "POST")
+public class Post extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long boardId;
+    private Long postId;
 
     @Column
     private String title;
@@ -31,18 +31,17 @@ public class Board extends Auditable {
     private Member member;
 
     @Enumerated(EnumType.STRING)
-    private BoardStatus boardStatus;
+    private PostStatus postStatus;
 
     // 게시글 상태
     @Getter
-    public enum BoardStatus {
+    public enum PostStatus {
         QUESTION_ANSWER_POST("질문&답변 게시글"),
-        THINKING_POST("고민 게시글"),
-        STUDY_POST("스터디 게시글");
+        THINKING_POST("고민 게시글");
 
         private final String status;
 
-        BoardStatus(String status) {
+        PostStatus(String status) {
             this.status = status;
         }
 

@@ -1,6 +1,9 @@
-package StudyCommunity.board.dto;
+package StudyCommunity.post.dto;
 
-import StudyCommunity.board.entity.Board;
+import StudyCommunity.post.entity.Post;
+import StudyCommunity.member.entity.Member;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,20 +15,21 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BoardResponseDto {
+public class PostPostDto {
 
+    @Positive
     private long memberId;
 
-    private long boardId;
-
+    @NotBlank
     private String title;
 
+    @NotBlank
     private String content;
 
     private String hashTag;
 
     // 게시글 상태
-    private Board.BoardStatus boardStatus;
+    private Post.PostStatus postStatus;
 
 
     private LocalDateTime createdAt;
@@ -34,5 +38,10 @@ public class BoardResponseDto {
 //    private String createdBy;
 //    private String modifiedBy;
 
+    public Member getMember() {
+        Member member = new Member();
+        member.setMemberId(memberId);
+        return member;
+    }
 
 }

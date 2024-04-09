@@ -1,4 +1,4 @@
-package StudyCommunity.board.dto;
+package StudyCommunity.post.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
@@ -11,10 +11,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BoardPatchDto {
+public class PostPatchDto {
 
     @Positive
-    private long boardId;
+    private long postId;
 
     @NotBlank
     private String title;

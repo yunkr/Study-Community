@@ -1,6 +1,5 @@
 package StudyCommunity.onlinestudy.service;
 
-import StudyCommunity.board.entity.Board;
 import StudyCommunity.exception.BusinessLogicException;
 import StudyCommunity.exception.ExceptionCode;
 import StudyCommunity.member.entity.Member;

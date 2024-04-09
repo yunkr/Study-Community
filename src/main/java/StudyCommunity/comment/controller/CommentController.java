@@ -1,6 +1,5 @@
 package StudyCommunity.comment.controller;
 
-import StudyCommunity.board.entity.Board;
 import StudyCommunity.comment.dto.CommentPatchDto;
 import StudyCommunity.comment.dto.CommentPostDto;
 import StudyCommunity.comment.dto.CommentResponseDto;
