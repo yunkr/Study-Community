@@ -40,7 +40,7 @@ public class BoardService {
         findBoard.setContent(board.getContent());
         findBoard.setHashTag(board.getHashTag());
 
-        return boardRepository.save(board);
+        return boardRepository.save(findBoard);
     }
 
     // 게시글 조회

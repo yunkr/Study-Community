@@ -45,7 +45,7 @@ public class OnlineStudyService {
         findOnlineStudy.setPrecautions(onlineStudy.getPrecautions());
         findOnlineStudy.setApply(onlineStudy.getApply());
 
-        return onlineStudyRepository.save(onlineStudy);
+        return onlineStudyRepository.save(findOnlineStudy);
     }
 
     // 온라인 스터디 조회
