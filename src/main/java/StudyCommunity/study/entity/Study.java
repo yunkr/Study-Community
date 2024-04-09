@@ -1,4 +1,4 @@
-package StudyCommunity.onlinestudy.entity;
+package StudyCommunity.study.entity;
 
 import StudyCommunity.audit.Auditable;
 import StudyCommunity.member.entity.Member;
@@ -10,12 +10,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity(name = "ONLINE_STUDY")
-public class OnlineStudy extends Auditable {
+@Entity(name = "STUDY")
+public class Study extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long onlineStudyId;
+    private Long studyId;
 
     // 제목
     @Column(length = 250, nullable = false)

@@ -9,7 +9,7 @@ public enum ExceptionCode {
     POST_EXISTS(409, "Board exists"),
     POST_NOT_FOUND(404, "Board not found"),
     COMMENT_NOT_FOUND(404, "Comment not found"),
-    ONLINE_STUDY_NOT_FOUND(404, "Online study not found");
+    STUDY_NOT_FOUND(404, "Study not found");
 
     @Getter
     private final int status;
