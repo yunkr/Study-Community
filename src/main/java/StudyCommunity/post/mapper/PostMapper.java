@@ -53,7 +53,7 @@ public interface PostMapper {
         postResponseDto.setHashTag(post.getHashTag());
         postResponseDto.setPostStatus(post.getPostStatus());
         postResponseDto.setCreatedAt(post.getCreatedAt());
-        postResponseDto.setModifiedAt(post.getLastModifiedAt());
+        postResponseDto.setLastModifiedAt(post.getLastModifiedAt());
 
         return postResponseDto;
     }

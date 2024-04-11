@@ -1,4 +1,4 @@
-package StudyCommunity.studyComment.dto;
+package StudyCommunity.note.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,19 +11,15 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudyCommentResponseDto {
+public class NoteResponseDto {
 
     private long memberId;
-    private long studyId;
+    private long noteId;
 
-    private long studyCommentId;
-
+    private String title;
     private String content;
-
 
     private LocalDateTime createdAt;
     private LocalDateTime lastModifiedAt;
 
-//    private String createdBy;
-//    private String modifiedBy;
 }

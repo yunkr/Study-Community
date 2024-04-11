@@ -1,6 +1,7 @@
-package StudyCommunity.studyComment.dto;
+package StudyCommunity.note.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,11 +11,14 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudyCommentPatchDto {
+public class NotePatchDto {
 
-    private long studyCommentId;
+    @Positive
+    private long noteId;
+
+    @NotBlank
+    private String title;
 
     @NotBlank
     private String content;
-
 }

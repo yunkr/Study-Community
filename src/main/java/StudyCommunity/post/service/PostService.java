@@ -73,7 +73,7 @@ public class PostService {
         post.setMember(memberService.findMember(member.getMemberId()));
     }
 
-    // Board 존재하는지 확인
+    // Post 존재하는지 확인
     public Post findverifyPost(long postId) {
 
         Optional<Post> post = postRepository.findById(postId);

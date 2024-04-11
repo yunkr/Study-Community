@@ -1,7 +1,6 @@
-package StudyCommunity.studyComment.repository;
+package StudyCommunity.studycomment.repository;
 
-import StudyCommunity.study.entity.Study;
-import StudyCommunity.studyComment.entity.StudyComment;
+import StudyCommunity.studycomment.entity.StudyComment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

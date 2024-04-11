@@ -1,4 +1,4 @@
-package StudyCommunity.studyComment.entity;
+package StudyCommunity.studycomment.entity;
 
 import StudyCommunity.audit.Auditable;
 import StudyCommunity.member.entity.Member;

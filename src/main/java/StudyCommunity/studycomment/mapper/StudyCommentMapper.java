@@ -1,11 +1,11 @@
-package StudyCommunity.studyComment.mapper;
+package StudyCommunity.studycomment.mapper;
 
 import StudyCommunity.member.entity.Member;
 import StudyCommunity.study.entity.Study;
-import StudyCommunity.studyComment.dto.StudyCommentPatchDto;
-import StudyCommunity.studyComment.dto.StudyCommentPostDto;
-import StudyCommunity.studyComment.dto.StudyCommentResponseDto;
-import StudyCommunity.studyComment.entity.StudyComment;
+import StudyCommunity.studycomment.dto.StudyCommentPatchDto;
+import StudyCommunity.studycomment.dto.StudyCommentPostDto;
+import StudyCommunity.studycomment.dto.StudyCommentResponseDto;
+import StudyCommunity.studycomment.entity.StudyComment;
 import org.apache.ibatis.annotations.Mapper;
 
 

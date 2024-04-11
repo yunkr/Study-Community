@@ -21,7 +21,7 @@ import java.util.List;
 @RequestMapping("/posts")
 public class PostController {
 
-    private final static String POST_DEFAULT_URL = "/boards";
+    private final static String POST_DEFAULT_URL = "/posts";
 
     private final PostService postService;
     private final PostMapper postMapper;

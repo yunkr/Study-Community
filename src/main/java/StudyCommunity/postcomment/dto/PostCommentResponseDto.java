@@ -1,6 +1,5 @@
-package StudyCommunity.post.dto;
+package StudyCommunity.postcomment.dto;
 
-import StudyCommunity.post.entity.Post;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,27 +11,17 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostResponseDto {
+public class PostCommentResponseDto {
 
     private long memberId;
-
     private long postId;
 
-    private String title;
+    private long postCommentId;
 
     private String content;
-
-    private String hashTag;
-
-    // 게시글 상태
-    private Post.PostStatus postStatus;
 
 
     private LocalDateTime createdAt;
     private LocalDateTime lastModifiedAt;
-
-//    private String createdBy;
-//    private String modifiedBy;
-
 
 }

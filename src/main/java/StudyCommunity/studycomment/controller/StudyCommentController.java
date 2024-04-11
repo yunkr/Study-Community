@@ -1,12 +1,12 @@
-package StudyCommunity.studyComment.controller;
+package StudyCommunity.studycomment.controller;
 
 import StudyCommunity.dto.SingleResponseDto;
-import StudyCommunity.studyComment.dto.StudyCommentPatchDto;
-import StudyCommunity.studyComment.dto.StudyCommentPostDto;
-import StudyCommunity.studyComment.dto.StudyCommentResponseDto;
-import StudyCommunity.studyComment.entity.StudyComment;
-import StudyCommunity.studyComment.mapper.StudyCommentMapper;
-import StudyCommunity.studyComment.service.StudyCommentService;
+import StudyCommunity.studycomment.dto.StudyCommentPatchDto;
+import StudyCommunity.studycomment.dto.StudyCommentPostDto;
+import StudyCommunity.studycomment.dto.StudyCommentResponseDto;
+import StudyCommunity.studycomment.entity.StudyComment;
+import StudyCommunity.studycomment.mapper.StudyCommentMapper;
+import StudyCommunity.studycomment.service.StudyCommentService;
 import StudyCommunity.utils.UriCreator;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
@@ -21,7 +21,7 @@ import java.util.List;
 @RequestMapping("/studyComments")
 public class StudyCommentController {
 
-    private final static String COMMENT_DEFAULT_URL = "/studyComments";
+    private final static String STUDY_COMMENT_DEFAULT_URL = "/studyComments";
 
     private final StudyCommentService studyCommentService;
     private final StudyCommentMapper studyCommentMapper;
@@ -36,7 +36,7 @@ public class StudyCommentController {
     @PostMapping
     public ResponseEntity<?> postStudyComment(@Valid @RequestBody StudyCommentPostDto requestBody) {
         StudyComment studyComment = studyCommentService.createStudyComment(studyCommentMapper.studyCommentPostDtoToStudyComment(requestBody));
-        URI location = UriCreator.createUri(COMMENT_DEFAULT_URL, studyComment.getStudyCommentId());
+        URI location = UriCreator.createUri(STUDY_COMMENT_DEFAULT_URL, studyComment.getStudyCommentId());
 
         return ResponseEntity.created(location).build();
     }

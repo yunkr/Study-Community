@@ -1,4 +1,4 @@
-package StudyCommunity.studyComment.service;
+package StudyCommunity.studycomment.service;
 
 import StudyCommunity.exception.BusinessLogicException;
 import StudyCommunity.exception.ExceptionCode;
@@ -6,8 +6,8 @@ import StudyCommunity.member.entity.Member;
 import StudyCommunity.member.service.MemberService;
 import StudyCommunity.study.entity.Study;
 import StudyCommunity.study.service.StudyService;
-import StudyCommunity.studyComment.entity.StudyComment;
-import StudyCommunity.studyComment.repository.StudyCommentRepository;
+import StudyCommunity.studycomment.entity.StudyComment;
+import StudyCommunity.studycomment.repository.StudyCommentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
