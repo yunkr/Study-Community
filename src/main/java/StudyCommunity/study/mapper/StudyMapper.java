@@ -1,12 +1,17 @@
 package StudyCommunity.study.mapper;
 
 import StudyCommunity.member.entity.Member;
+import StudyCommunity.postTag.PostTag;
 import StudyCommunity.study.dto.StudyPatchDto;
 import StudyCommunity.study.dto.StudyPostDto;
 import StudyCommunity.study.dto.StudyResponseDto;
 import StudyCommunity.study.entity.Study;
+import StudyCommunity.studyTag.StudyTag;
 import StudyCommunity.studycategory.entity.StudyCategory;
+import StudyCommunity.tag.entity.Tag;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.stream.Collectors;
 
 @Mapper
 public interface StudyMapper {
@@ -31,6 +36,17 @@ public interface StudyMapper {
         study.setIntroduction(studyPostDto.getIntroduction());
         study.setPrecautions(studyPostDto.getPrecautions());
         study.setApply(studyPostDto.getApply());
+
+        if (studyPostDto.getTags() != null) {
+            for (String tag : studyPostDto.getTags()) {
+                Tag tagName = new Tag();
+                tagName.setTagName(tag);
+                StudyTag studyTag = new StudyTag();
+                studyTag.setStudy(study);
+                studyTag.setTag(tagName);
+                study.getStudyTags().add(studyTag);
+            }
+        }
 
         return study;
     }
@@ -73,6 +89,11 @@ public interface StudyMapper {
 
         studyResponseDto.setCreatedAt(study.getCreatedAt());
         studyResponseDto.setLastModifiedAt(study.getLastModifiedAt());
+
+        studyResponseDto.setTags(study.getStudyTags()
+                .stream()
+                .map(studyHashTag -> studyHashTag.getTag().getTagName())
+                .collect(Collectors.toSet()));
 
         return studyResponseDto;
     }

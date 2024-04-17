@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -26,6 +27,7 @@ public class StudyResponseDto {
     private String precautions;
     private String apply;
 
+    private Set<String> tags;
 
     private LocalDateTime createdAt;
     private LocalDateTime lastModifiedAt;

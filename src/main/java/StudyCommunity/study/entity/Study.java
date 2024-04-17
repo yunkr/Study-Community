@@ -2,11 +2,16 @@ package StudyCommunity.study.entity;
 
 import StudyCommunity.audit.Auditable;
 import StudyCommunity.member.entity.Member;
+import StudyCommunity.postTag.PostTag;
+import StudyCommunity.studyTag.StudyTag;
 import StudyCommunity.studycategory.entity.StudyCategory;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @NoArgsConstructor
 @Getter
@@ -57,5 +62,8 @@ public class Study extends Auditable {
     @ManyToOne
     @JoinColumn(name = "study_category")
     private StudyCategory studyCategory;
+
+    @OneToMany(mappedBy = "study", cascade = CascadeType.ALL)
+    private Set<StudyTag> studyTags = new HashSet<>();
 
 }

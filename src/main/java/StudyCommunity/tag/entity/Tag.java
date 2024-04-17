@@ -1,7 +1,8 @@
 package StudyCommunity.tag.entity;
 
+import StudyCommunity.studyTag.StudyTag;
 import StudyCommunity.audit.Auditable;
-import StudyCommunity.post.entity.PostTag;
+import StudyCommunity.postTag.PostTag;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,12 @@ public class Tag extends Auditable {
     @Column(nullable = false)
     private String tagName;
 
+    // 게시글 - 해시태그
     @OneToMany(mappedBy = "tag")
     private Set<PostTag> postTags = new HashSet<>();
+
+    // 스터디 - 해시태그
+    @OneToMany(mappedBy = "tag")
+    private Set<StudyTag> studyTags = new HashSet<>();
 
 }

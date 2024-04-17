@@ -1,8 +1,7 @@
 package StudyCommunity.post.service;
 
-import StudyCommunity.post.dto.PostPostDto;
 import StudyCommunity.post.entity.Post;
-import StudyCommunity.post.entity.PostTag;
+import StudyCommunity.postTag.PostTag;
 import StudyCommunity.post.repository.PostRepository;
 import StudyCommunity.exception.BusinessLogicException;
 import StudyCommunity.exception.ExceptionCode;
@@ -10,10 +9,8 @@ import StudyCommunity.member.entity.Member;
 import StudyCommunity.member.service.MemberService;
 import StudyCommunity.tag.entity.Tag;
 import StudyCommunity.tag.repository.TagRepository;
-import StudyCommunity.tag.service.TagService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

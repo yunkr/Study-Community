@@ -4,8 +4,12 @@ import StudyCommunity.exception.BusinessLogicException;
 import StudyCommunity.exception.ExceptionCode;
 import StudyCommunity.member.entity.Member;
 import StudyCommunity.member.service.MemberService;
+import StudyCommunity.postTag.PostTag;
 import StudyCommunity.study.entity.Study;
 import StudyCommunity.study.repository.StudyRepository;
+import StudyCommunity.studyTag.StudyTag;
+import StudyCommunity.tag.entity.Tag;
+import StudyCommunity.tag.repository.TagRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,16 +20,29 @@ public class StudyService {
 
     private final StudyRepository studyRepository;
     private final MemberService memberService;
+    private final TagRepository tagRepository;
 
-    public StudyService(StudyRepository studyRepository, MemberService memberService) {
+    public StudyService(StudyRepository studyRepository, MemberService memberService, TagRepository tagRepository) {
         this.studyRepository = studyRepository;
         this.memberService = memberService;
+        this.tagRepository = tagRepository;
     }
 
     // 온라인 스터디 등록
     public Study createStudy(Study study) {
 
         verifyMember(study);
+
+        for (StudyTag studyTag : study.getStudyTags()) {
+            Tag tag = studyTag.getTag();
+            Tag existingHashTag = tagRepository.findByTagName(tag.getTagName());
+            if (existingHashTag == null) {
+                tagRepository.save(tag);
+            } else {
+                studyTag.setTag(existingHashTag);
+            }
+            studyTag.setStudy(study);
+        }
 
         return studyRepository.save(study);
     }

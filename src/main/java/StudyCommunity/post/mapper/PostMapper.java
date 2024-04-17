@@ -5,7 +5,7 @@ import StudyCommunity.post.dto.PostPatchDto;
 import StudyCommunity.post.dto.PostPostDto;
 import StudyCommunity.post.dto.PostResponseDto;
 import StudyCommunity.post.entity.Post;
-import StudyCommunity.post.entity.PostTag;
+import StudyCommunity.postTag.PostTag;
 import StudyCommunity.tag.entity.Tag;
 import org.apache.ibatis.annotations.Mapper;
 

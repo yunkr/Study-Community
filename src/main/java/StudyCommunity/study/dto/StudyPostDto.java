@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @AllArgsConstructor
@@ -45,6 +46,7 @@ public class StudyPostDto {
     @NotBlank
     private String apply;
 
+    private Set<String> tags;
 
     private LocalDateTime createdAt;
     private LocalDateTime lastModifiedAt;
