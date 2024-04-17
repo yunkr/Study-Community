@@ -25,14 +25,4 @@ public class PostTag extends Auditable {
     @JoinColumn(name = "tag_id")
     private Tag tag;
 
-
-    public void addPost(Post post){
-        this.post = post;
-        this.post.getPostTags().add(this);
-    }
-
-    public void addTag(Tag tag){
-        this.tag = tag;
-    }
-
 }

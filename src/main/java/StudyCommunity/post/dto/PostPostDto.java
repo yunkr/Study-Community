@@ -1,8 +1,7 @@
 package StudyCommunity.post.dto;
 
-import StudyCommunity.post.entity.Post;
 import StudyCommunity.member.entity.Member;
-import StudyCommunity.post.entity.PostTag;
+import StudyCommunity.post.entity.Post;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -11,7 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Set;
 
 @Getter

@@ -1,40 +1,33 @@
 package StudyCommunity.tag.service;
 
-import StudyCommunity.post.dto.PostPostDto;
-import StudyCommunity.post.entity.Post;
-import StudyCommunity.post.entity.PostTag;
-import StudyCommunity.post.repository.PostTagRepository;
+import StudyCommunity.tag.dto.TagResponseDto;
 import StudyCommunity.tag.entity.Tag;
 import StudyCommunity.tag.repository.TagRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TagService {
 
     private final TagRepository tagRepository;
-    //private final PostTagRepository postTagRepository;
-
 
     public TagService(TagRepository tagRepository) {
         this.tagRepository = tagRepository;
     }
 
-    public void createPostTag(Post post, PostPostDto postPostDto) {
-        Set<String> tags = new HashSet<>(postPostDto.getTags());
-        tags.forEach(tagName -> {
-            PostTag postTag = new PostTag();
-            Tag tag = createTag(tagName);
-            postTag.addPost(post);
-            postTag.addTag(tag);
-        });
+    public List<TagResponseDto> getAllHashTags() {
+        List<Tag> tagEntities = tagRepository.findAll();
+        return tagEntities.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
-    public Tag createTag(String tagName) {
-        Tag tag = tagRepository.findByTagName(tagName);
-
-        return tagRepository.save(tag);
+    private TagResponseDto convertToDto(Tag tag) {
+        TagResponseDto tagResponseDto = new TagResponseDto();
+        tagResponseDto.setTagId(tag.getTagId());
+        tagResponseDto.setTagName(tag.getTagName());
+        return tagResponseDto;
     }
 }

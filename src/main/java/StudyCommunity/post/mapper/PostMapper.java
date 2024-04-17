@@ -1,18 +1,15 @@
 package StudyCommunity.post.mapper;
 
+import StudyCommunity.member.entity.Member;
 import StudyCommunity.post.dto.PostPatchDto;
 import StudyCommunity.post.dto.PostPostDto;
 import StudyCommunity.post.dto.PostResponseDto;
 import StudyCommunity.post.entity.Post;
-import StudyCommunity.member.entity.Member;
 import StudyCommunity.post.entity.PostTag;
-import StudyCommunity.tag.dto.TagResponseDto;
 import StudyCommunity.tag.entity.Tag;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Mapper
@@ -80,10 +77,4 @@ public interface PostMapper {
 
     List<PostResponseDto> postsToPostResponseDtos(List<Post> posts);
 
-
-//    default Set<String> tagSet(Set<PostTag> postHashTags) {
-//        return postHashTags.stream()
-//                .map(postHashTag -> postHashTag.getTag().getTagName())
-//                .collect(Collectors.toSet());
-//    }
 }
