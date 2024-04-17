@@ -9,6 +9,4 @@ import java.util.List;
 @Repository
 public interface PostTagRepository extends JpaRepository<PostTag, Long> {
 
-    //List<PostTag> findAllByTagId(Long postTagId);
-
 }

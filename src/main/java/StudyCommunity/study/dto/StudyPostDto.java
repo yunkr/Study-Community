@@ -1,6 +1,7 @@
 package StudyCommunity.study.dto;
 
 import StudyCommunity.member.entity.Member;
+import StudyCommunity.studycategory.entity.StudyCategory;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -16,6 +17,9 @@ public class StudyPostDto {
 
     @Positive
     private long memberId;
+
+    @Positive
+    private long studyCategoryId;
 
     @NotBlank
     private String title;
@@ -49,5 +53,11 @@ public class StudyPostDto {
         Member member = new Member();
         member.setMemberId(memberId);
         return member;
+    }
+
+    public StudyCategory getStudyCategory() {
+        StudyCategory studyCategory = new StudyCategory();
+        studyCategory.setStudyCategoryId(studyCategoryId);
+        return studyCategory;
     }
 }

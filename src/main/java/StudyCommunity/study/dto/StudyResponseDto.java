@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 public class StudyResponseDto {
 
     private long memberId;
+    private long studyCategoryId;
     private long studyId;
 
     private String title;

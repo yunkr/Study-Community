@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -14,5 +16,8 @@ public class StudyCategoryResponseDto {
     private long categoryId;
 
     private String categoryName;
+
+    private LocalDateTime createdAt;
+    private LocalDateTime lastModifiedAt;
 
 }

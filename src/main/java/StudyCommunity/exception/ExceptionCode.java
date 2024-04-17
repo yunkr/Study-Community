@@ -11,7 +11,8 @@ public enum ExceptionCode {
     STUDY_COMMENT_NOT_FOUND(404, "Study Comment not found"),
     STUDY_NOT_FOUND(404, "Study not found"),
     POST_COMMENT_NOT_FOUND(404, "Post Comment not found"),
-    NOTE_NOT_FOUND(404, "Note not found");
+    NOTE_NOT_FOUND(404, "Note not found"),
+    STUDY_CATEGORY_NOT_FOUND(404, "Study Category not found");
 
 
     @Getter

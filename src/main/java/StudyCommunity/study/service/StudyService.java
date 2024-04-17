@@ -68,16 +68,6 @@ public class StudyService {
         studyRepository.deleteById(studyId);
     }
 
-
-    /*
-    // member 존재하는지 확인
-    public void verifyMember(OnlineStudy onlineStudy) {
-
-        Member member = memberService.findMember(onlineStudy.getMember().getMemberId());
-        onlineStudy.setMember(member);
-    }
-     */
-
     // member 존재하는지 확인
     public void verifyMember(Study study) {
         Member member = study.getMember();

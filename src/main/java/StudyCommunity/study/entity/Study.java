@@ -2,6 +2,7 @@ package StudyCommunity.study.entity;
 
 import StudyCommunity.audit.Auditable;
 import StudyCommunity.member.entity.Member;
+import StudyCommunity.studycategory.entity.StudyCategory;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -52,5 +53,9 @@ public class Study extends Auditable {
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
+
+    @ManyToOne
+    @JoinColumn(name = "study_category")
+    private StudyCategory studyCategory;
 
 }

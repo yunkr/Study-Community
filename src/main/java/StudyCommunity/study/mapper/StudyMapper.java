@@ -5,6 +5,7 @@ import StudyCommunity.study.dto.StudyPatchDto;
 import StudyCommunity.study.dto.StudyPostDto;
 import StudyCommunity.study.dto.StudyResponseDto;
 import StudyCommunity.study.entity.Study;
+import StudyCommunity.studycategory.entity.StudyCategory;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
@@ -13,11 +14,15 @@ public interface StudyMapper {
     default Study studyPostDtoToStudy(StudyPostDto studyPostDto) {
 
         Member member = new Member();
+        StudyCategory studyCategory = new StudyCategory();
         Study study = new Study();
 
         member.setMemberId(member.getMemberId());
+        studyCategory.setStudyCategoryId(studyCategory.getStudyCategoryId());
 
         study.setMember(studyPostDto.getMember());
+        study.setStudyCategory(studyPostDto.getStudyCategory());
+
         study.setTitle(studyPostDto.getTitle());
         study.setTopic(studyPostDto.getTopic());
         study.setSchedule(studyPostDto.getSchedule());
@@ -53,6 +58,7 @@ public interface StudyMapper {
         StudyResponseDto studyResponseDto = new StudyResponseDto();
 
         studyResponseDto.setMemberId(study.getMember().getMemberId());
+        studyResponseDto.setStudyCategoryId(study.getStudyCategory().getStudyCategoryId());
 
         studyResponseDto.setStudyId(study.getStudyId());
 
