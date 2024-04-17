@@ -2,10 +2,16 @@ package StudyCommunity.post.entity;
 
 import StudyCommunity.audit.Auditable;
 import StudyCommunity.member.entity.Member;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @Getter
@@ -23,15 +29,15 @@ public class Post extends Auditable {
     @Column
     private String content;
 
-    @Column
-    private String hashTag;
+    @Enumerated(EnumType.STRING)
+    private PostStatus postStatus;
 
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @Enumerated(EnumType.STRING)
-    private PostStatus postStatus;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private Set<PostTag> postTags = new HashSet<>();
 
     // 게시글 상태
     @Getter

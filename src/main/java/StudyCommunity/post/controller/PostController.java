@@ -1,5 +1,6 @@
 package StudyCommunity.post.controller;
 
+import StudyCommunity.note.entity.Note;
 import StudyCommunity.post.dto.PostPatchDto;
 import StudyCommunity.post.dto.PostPostDto;
 import StudyCommunity.post.dto.PostResponseDto;

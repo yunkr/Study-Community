@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,6 +24,6 @@ public class PostPatchDto {
     @NotBlank(message = "내용을 작성해주세요.")
     private String content;
 
-    private String hashTag;
+    private List<String> tags;
 
 }

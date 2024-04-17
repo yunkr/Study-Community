@@ -1,12 +1,16 @@
 package StudyCommunity.post.dto;
 
 import StudyCommunity.post.entity.Post;
+import StudyCommunity.post.entity.PostTag;
+import StudyCommunity.tag.dto.TagResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,7 +26,7 @@ public class PostResponseDto {
 
     private String content;
 
-    private String hashTag;
+    private Set<String> tags;
 
     // 게시글 상태
     private Post.PostStatus postStatus;
@@ -30,9 +34,5 @@ public class PostResponseDto {
 
     private LocalDateTime createdAt;
     private LocalDateTime lastModifiedAt;
-
-//    private String createdBy;
-//    private String modifiedBy;
-
 
 }
