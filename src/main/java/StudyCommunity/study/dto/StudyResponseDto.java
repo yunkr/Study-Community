@@ -27,6 +27,8 @@ public class StudyResponseDto {
     private String precautions;
     private String apply;
 
+    private long viewCount;
+
     private Set<String> tags;
 
     private LocalDateTime createdAt;

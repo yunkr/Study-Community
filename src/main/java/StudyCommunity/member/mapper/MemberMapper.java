@@ -5,8 +5,10 @@ import StudyCommunity.member.dto.MemberPostDto;
 import StudyCommunity.member.dto.MemberResponseDto;
 import StudyCommunity.member.entity.Member;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Mapper
 public interface MemberMapper {
@@ -43,13 +45,14 @@ public interface MemberMapper {
         memberResponseDto.setCreatedAt(member.getCreatedAt());
         memberResponseDto.setLastModifiedAt(member.getLastModifiedAt());
 
-//        memberResponseDto.setCreatedBy(memberResponseDto.getCreatedBy());
-//        memberResponseDto.setLastModifiedBy(member.getLastModifiedBy());
-
         return memberResponseDto;
 
     }
 
-    List<MemberResponseDto> membersToMemberResponseDtos(List<Member> members);
-
+    // Java 17부터 Mapper부분은 default문을 사용해서 해야하나? default문을 사용하지 않으면 Postman에서 오류 뜸 500에러로
+    default List<MemberResponseDto> membersToMemberResponseDtos(List<Member> members) {
+        return members.stream()
+                .map(this::memberToMemberResponseDto)
+                .collect(Collectors.toList());
+    }
 }

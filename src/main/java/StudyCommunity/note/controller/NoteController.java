@@ -1,5 +1,6 @@
 package StudyCommunity.note.controller;
 
+import StudyCommunity.dto.MultiResponseDto;
 import StudyCommunity.dto.SingleResponseDto;
 import StudyCommunity.note.dto.NotePatchDto;
 import StudyCommunity.note.dto.NotePostDto;
@@ -7,9 +8,11 @@ import StudyCommunity.note.dto.NoteResponseDto;
 import StudyCommunity.note.entity.Note;
 import StudyCommunity.note.mapper.NoteMapper;
 import StudyCommunity.note.service.NoteService;
+import StudyCommunity.post.entity.Post;
 import StudyCommunity.utils.UriCreator;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -65,10 +68,13 @@ public class NoteController {
 
     // 모든 노트 조회(Get)
     @GetMapping
-    public ResponseEntity<?> getNotes() {
-        List<Note> notes = noteService.getAllNotes();
+    public ResponseEntity<?> getNotes(@RequestParam int page, @RequestParam int size) {
+        Page<Note> pageNotes = noteService.findAllNotes(page-1, size);
+        List<Note> notes = pageNotes.getContent();
 
-        return new ResponseEntity<>(notes, HttpStatus.OK);
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(noteMapper.noteToNoteResponseDtos(notes), pageNotes)
+                , HttpStatus.OK);
     }
 
 
@@ -79,6 +85,25 @@ public class NoteController {
         noteService.deleteNote(noteId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    /* 검색 기능 - pagination(페이지네이션) */
+    @GetMapping("/search")
+    public ResponseEntity<?> searchNotesByTitleContaining(
+            @RequestParam(defaultValue = "") String searchKeyword,
+            @RequestParam(defaultValue = "1") @Positive int page,
+            @RequestParam(defaultValue = "10") @Positive int size,
+            @RequestParam(defaultValue = "descending") String sort) {
+
+        boolean ascendingSort = sort.equalsIgnoreCase("ascending");
+
+        Page<Note> notesPage = noteService.searchNotes(page - 1, size, searchKeyword, ascendingSort);
+        List<Note> content = notesPage.getContent();
+
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(noteMapper.noteToNoteResponseDtos(content), notesPage),
+                HttpStatus.OK
+        );
     }
 
 }

@@ -1,6 +1,8 @@
 package StudyCommunity.study.controller;
 
+import StudyCommunity.dto.MultiResponseDto;
 import StudyCommunity.dto.SingleResponseDto;
+import StudyCommunity.post.entity.Post;
 import StudyCommunity.study.dto.StudyPatchDto;
 import StudyCommunity.study.dto.StudyPostDto;
 import StudyCommunity.study.dto.StudyResponseDto;
@@ -10,6 +12,7 @@ import StudyCommunity.study.service.StudyService;
 import StudyCommunity.utils.UriCreator;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -33,7 +36,7 @@ public class StudyController {
         this.studyService = studyService;
     }
 
-    // 온라인 스터디 등록(Post)
+    // 스터디 등록(Post)
     @PostMapping
     public ResponseEntity<?> postStudy(@Valid @RequestBody StudyPostDto requestBody) {
         Study study = studyService.createStudy(studyMapper.studyPostDtoToStudy(requestBody));
@@ -42,7 +45,7 @@ public class StudyController {
         return ResponseEntity.created(location).build();
     }
 
-    // 온라인 스터디 수정(Patch)
+    // 스터디 수정(Patch)
     @PatchMapping("/{study-id}")
     public ResponseEntity<?> patchStudy(@PathVariable("study-id") @Positive long studyId,
                                               @Valid @RequestBody StudyPatchDto requestBody) {
@@ -54,7 +57,7 @@ public class StudyController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    // 온라인 스터디 조회(Get)
+    // 스터디 조회(Get)
     @GetMapping("/{study-id}")
     public ResponseEntity<?> getStudy(@PathVariable("study-id") @Positive long studyId) {
 
@@ -65,20 +68,42 @@ public class StudyController {
                 , HttpStatus.OK);
     }
 
-    // 모든 온라인 스터디 조회(Get)
+    // 모든 스터디 조회(Get)
     @GetMapping
-    public ResponseEntity<?> getStudies() {
-        List<Study> studies = studyService.getAllStudies();
+    public ResponseEntity<?> getStudies(@RequestParam int page, @RequestParam int size) {
+        Page<Study> pageStudies = studyService.findAllStudies(page-1, size);
+        List<Study> studies = pageStudies.getContent();
 
-        return new ResponseEntity<>(studies, HttpStatus.OK);
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(studyMapper.studyToStudyResponseDtos(studies), pageStudies)
+                , HttpStatus.OK);
     }
 
-    // 온라인 스터디 삭제(Delete)
+    // 스터디 삭제(Delete)
     @DeleteMapping("/{study-id}")
     public ResponseEntity<?> deleteStudy(@PathVariable("study-id") @Positive long studyId) {
         studyService.deleteStudy(studyId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    /* 검색 기능 - pagination(페이지네이션) */
+    @GetMapping("/search")
+    public ResponseEntity<?> searchStudiesByTitleContaining(
+            @RequestParam(defaultValue = "") String searchKeyword,
+            @RequestParam(defaultValue = "1") @Positive int page,
+            @RequestParam(defaultValue = "10") @Positive int size,
+            @RequestParam(defaultValue = "descending") String sort) {
+
+        boolean ascendingSort = sort.equalsIgnoreCase("ascending");
+
+        Page<Study> studiesPage = studyService.searchStudies(page - 1, size, searchKeyword, ascendingSort);
+        List<Study> content = studiesPage.getContent();
+
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(studyMapper.studyToStudyResponseDtos(content), studiesPage),
+                HttpStatus.OK
+        );
     }
 
 }

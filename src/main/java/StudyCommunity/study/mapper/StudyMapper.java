@@ -1,6 +1,8 @@
 package StudyCommunity.study.mapper;
 
 import StudyCommunity.member.entity.Member;
+import StudyCommunity.post.dto.PostResponseDto;
+import StudyCommunity.post.entity.Post;
 import StudyCommunity.postTag.PostTag;
 import StudyCommunity.study.dto.StudyPatchDto;
 import StudyCommunity.study.dto.StudyPostDto;
@@ -11,6 +13,7 @@ import StudyCommunity.studycategory.entity.StudyCategory;
 import StudyCommunity.tag.entity.Tag;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Mapper
@@ -86,7 +89,7 @@ public interface StudyMapper {
         studyResponseDto.setIntroduction(study.getIntroduction());
         studyResponseDto.setPrecautions(study.getPrecautions());
         studyResponseDto.setApply(study.getApply());
-
+        studyResponseDto.setViewCount(study.getViewCount());
         studyResponseDto.setCreatedAt(study.getCreatedAt());
         studyResponseDto.setLastModifiedAt(study.getLastModifiedAt());
 
@@ -96,6 +99,12 @@ public interface StudyMapper {
                 .collect(Collectors.toSet()));
 
         return studyResponseDto;
+    }
+
+    default List<StudyResponseDto> studyToStudyResponseDtos(List<Study> studies) {
+        return studies.stream()
+                .map(this::studyToStudyResponseDto)
+                .collect(Collectors.toList());
     }
 
 }

@@ -1,5 +1,7 @@
 package StudyCommunity.post.controller;
 
+import StudyCommunity.dto.MultiResponseDto;
+import StudyCommunity.member.entity.Member;
 import StudyCommunity.note.entity.Note;
 import StudyCommunity.post.dto.PostPatchDto;
 import StudyCommunity.post.dto.PostPostDto;
@@ -11,6 +13,7 @@ import StudyCommunity.dto.SingleResponseDto;
 import StudyCommunity.utils.UriCreator;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -64,10 +67,13 @@ public class PostController {
 
     // 모든 게시글 조회(Get)
     @GetMapping
-    public ResponseEntity<?> getPosts() {
-        List<Post> posts = postService.getAllPosts();
+    public ResponseEntity<?> getPosts(@RequestParam int page, @RequestParam int size) {
+        Page<Post> pagePosts = postService.findAllPosts(page-1, size);
+        List<Post> posts = pagePosts.getContent();
 
-        return new ResponseEntity<>(posts, HttpStatus.OK);
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(postMapper.postsToPostResponseDtos(posts), pagePosts)
+                , HttpStatus.OK);
     }
 
     // 게시글 삭제(Delete)
@@ -78,4 +84,23 @@ public class PostController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+
+    /* 검색 기능 - pagination(페이지네이션) */
+    @GetMapping("/search")
+    public ResponseEntity<?> searchPostsByTitleContaining(
+            @RequestParam(defaultValue = "") String searchKeyword,
+            @RequestParam(defaultValue = "1") @Positive int page,
+            @RequestParam(defaultValue = "10") @Positive int size,
+            @RequestParam(defaultValue = "descending") String sort) {
+
+        boolean ascendingSort = sort.equalsIgnoreCase("ascending");
+
+        Page<Post> postsPage = postService.searchPosts(page - 1, size, searchKeyword, ascendingSort);
+        List<Post> content = postsPage.getContent();
+
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(postMapper.postsToPostResponseDtos(content), postsPage),
+                HttpStatus.OK
+        );
+    }
 }

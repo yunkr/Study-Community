@@ -55,6 +55,10 @@ public class Study extends Auditable {
     @Column(length = 2500, nullable = false)
     private String apply;
 
+    // 조회수
+    @Column(columnDefinition = "bigint default 0", nullable = false)
+    private long viewCount;
+
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;

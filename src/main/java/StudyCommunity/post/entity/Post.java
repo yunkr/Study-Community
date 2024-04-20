@@ -27,6 +27,10 @@ public class Post extends Auditable {
     @Column
     private String content;
 
+    // 조회수
+    @Column(columnDefinition = "bigint default 0", nullable = false)
+    private long viewCount;
+
     @Enumerated(EnumType.STRING)
     private PostStatus postStatus;
 

@@ -5,7 +5,12 @@ import StudyCommunity.note.dto.NotePatchDto;
 import StudyCommunity.note.dto.NotePostDto;
 import StudyCommunity.note.dto.NoteResponseDto;
 import StudyCommunity.note.entity.Note;
+import StudyCommunity.post.dto.PostResponseDto;
+import StudyCommunity.post.entity.Post;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Mapper
 public interface NoteMapper {
@@ -50,5 +55,11 @@ public interface NoteMapper {
         noteResponseDto.setLastModifiedAt(note.getLastModifiedAt());
 
         return noteResponseDto;
+    }
+
+    default List<NoteResponseDto> noteToNoteResponseDtos(List<Note> notes) {
+        return notes.stream()
+                .map(this::noteToNoteResponseDto)
+                .collect(Collectors.toList());
     }
 }

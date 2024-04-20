@@ -6,6 +6,11 @@ import StudyCommunity.member.entity.Member;
 import StudyCommunity.member.service.MemberService;
 import StudyCommunity.note.entity.Note;
 import StudyCommunity.note.repository.NoteRepository;
+import StudyCommunity.post.entity.Post;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,9 +54,13 @@ public class NoteService {
         return findNote;
     }
 
-    // 모든 Note 조회
-    public List<Note> getAllNotes() {
-        return noteRepository.findAll();
+//    // 모든 Note 조회
+//    public List<Note> getAllNotes() {
+//        return noteRepository.findAll();
+//    }
+
+    public Page<Note> findAllNotes(int page, int size) {
+        return noteRepository.findAll(PageRequest.of(page, size, Sort.by("noteId").descending()));
     }
 
     // Note 삭제
@@ -81,4 +90,24 @@ public class NoteService {
 
         return findNote;
     }
+
+    /* 검색 기능 - pagination(페이지네이션) */
+    public Page<Note> searchNotes(int page, int size, String searchKeyword, boolean ascendingSort) {
+        Pageable pageable;
+
+        if (ascendingSort) {
+            pageable = PageRequest.of(page, size, Sort.by("noteId").ascending());
+        } else {
+            pageable = PageRequest.of(page, size, Sort.by("noteId").descending());
+        }
+
+        if (searchKeyword.equals("")) {
+            return noteRepository.findAll(pageable);
+        } else if (!searchKeyword.equals("")) {
+            return noteRepository.findByTitleContaining(searchKeyword, pageable);
+        } else {
+            throw new BusinessLogicException(ExceptionCode.SEARCH_NOT_FOUND);
+        }
+    }
+
 }

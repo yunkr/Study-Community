@@ -23,6 +23,8 @@ public class PostResponseDto {
 
     private String content;
 
+    private long viewCount;
+
     private Set<String> tags;
 
     // 게시글 상태

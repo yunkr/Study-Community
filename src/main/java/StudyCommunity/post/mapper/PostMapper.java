@@ -1,5 +1,6 @@
 package StudyCommunity.post.mapper;
 
+import StudyCommunity.member.dto.MemberResponseDto;
 import StudyCommunity.member.entity.Member;
 import StudyCommunity.post.dto.PostPatchDto;
 import StudyCommunity.post.dto.PostPostDto;
@@ -62,6 +63,7 @@ public interface PostMapper {
         postResponseDto.setPostId(post.getPostId());
         postResponseDto.setTitle(post.getTitle());
         postResponseDto.setContent(post.getContent());
+        postResponseDto.setViewCount(post.getViewCount());
         postResponseDto.setPostStatus(post.getPostStatus());
         postResponseDto.setCreatedAt(post.getCreatedAt());
         postResponseDto.setLastModifiedAt(post.getLastModifiedAt());
@@ -75,6 +77,11 @@ public interface PostMapper {
 
     }
 
-    List<PostResponseDto> postsToPostResponseDtos(List<Post> posts);
+    //List<PostResponseDto> postsToPostResponseDtos(List<Post> posts);
 
+    default List<PostResponseDto> postsToPostResponseDtos(List<Post> posts) {
+        return posts.stream()
+                .map(this::postToPostResponseDto)
+                .collect(Collectors.toList());
+    }
 }

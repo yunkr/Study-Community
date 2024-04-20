@@ -1,5 +1,6 @@
 package StudyCommunity.member.controller;
 
+import StudyCommunity.dto.MultiResponseDto;
 import StudyCommunity.member.dto.MemberPatchDto;
 import StudyCommunity.member.dto.MemberPostDto;
 import StudyCommunity.member.dto.MemberResponseDto;
@@ -10,6 +11,7 @@ import StudyCommunity.dto.SingleResponseDto;
 import StudyCommunity.utils.UriCreator;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -60,12 +62,25 @@ public class MemberController {
                 , HttpStatus.OK);
     }
 
+    /*
     // 모든 회원 조회(Get)
     @GetMapping
     public ResponseEntity<?> getMembers() {
         List<Member> members = memberService.getAllMembers();
 
         return new ResponseEntity<>(members, HttpStatus.OK);
+    }
+     */
+
+    // 모든 회원 조회(Get)
+    @GetMapping
+    public ResponseEntity<?> getMembers(@RequestParam int page, @RequestParam int size) {
+        Page<Member> pageMembers = memberService.findAllMembers(page-1, size);
+        List<Member> members = pageMembers.getContent();
+
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(memberMapper.membersToMemberResponseDtos(members), pageMembers)
+                , HttpStatus.OK);
     }
 
     // 회원 삭제(Delete)
