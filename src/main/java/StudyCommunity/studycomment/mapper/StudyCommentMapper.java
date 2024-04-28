@@ -1,12 +1,17 @@
 package StudyCommunity.studycomment.mapper;
 
 import StudyCommunity.member.entity.Member;
+import StudyCommunity.postcomment.dto.PostCommentResponseDto;
+import StudyCommunity.postcomment.entity.PostComment;
 import StudyCommunity.study.entity.Study;
 import StudyCommunity.studycomment.dto.StudyCommentPatchDto;
 import StudyCommunity.studycomment.dto.StudyCommentPostDto;
 import StudyCommunity.studycomment.dto.StudyCommentResponseDto;
 import StudyCommunity.studycomment.entity.StudyComment;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Mapper
@@ -55,6 +60,12 @@ public interface StudyCommentMapper {
         studyCommentResponseDto.setLastModifiedAt(studyComment.getLastModifiedAt());
 
         return studyCommentResponseDto;
+    }
+
+    default List<StudyCommentResponseDto> studyCommentToStudyCommentResponseDtos(List<StudyComment> studyComments) {
+        return studyComments.stream()
+                .map(this::studyCommentToStudyCommentResponseDto)
+                .collect(Collectors.toList());
     }
 
 }

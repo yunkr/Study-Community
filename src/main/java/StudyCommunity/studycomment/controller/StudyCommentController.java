@@ -1,6 +1,7 @@
 package StudyCommunity.studycomment.controller;
 
 import StudyCommunity.dto.SingleResponseDto;
+import StudyCommunity.postcomment.dto.PostCommentResponseDto;
 import StudyCommunity.studycomment.dto.StudyCommentPatchDto;
 import StudyCommunity.studycomment.dto.StudyCommentPostDto;
 import StudyCommunity.studycomment.dto.StudyCommentResponseDto;
@@ -69,6 +70,15 @@ public class StudyCommentController {
         List<StudyComment> studyComments = studyCommentService.getAllStudyComments();
 
         return new ResponseEntity<>(studyComments, HttpStatus.OK);
+    }
+
+    // 한 게시물에 달린 댓글들 찾기(Get)
+    @GetMapping("study/{study-id}")
+    public ResponseEntity<?> getCommentsByStudyId(@PathVariable("study-id") @Positive long studyId) {
+
+        List<StudyCommentResponseDto> response = studyCommentService.findCommentsByStudyId(studyId);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     // 댓글 삭제(Delete)

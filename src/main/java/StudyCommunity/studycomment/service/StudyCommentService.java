@@ -4,14 +4,19 @@ import StudyCommunity.exception.BusinessLogicException;
 import StudyCommunity.exception.ExceptionCode;
 import StudyCommunity.member.entity.Member;
 import StudyCommunity.member.service.MemberService;
+import StudyCommunity.postcomment.dto.PostCommentResponseDto;
+import StudyCommunity.postcomment.entity.PostComment;
 import StudyCommunity.study.entity.Study;
 import StudyCommunity.study.service.StudyService;
+import StudyCommunity.studycomment.dto.StudyCommentResponseDto;
 import StudyCommunity.studycomment.entity.StudyComment;
+import StudyCommunity.studycomment.mapper.StudyCommentMapper;
 import StudyCommunity.studycomment.repository.StudyCommentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class StudyCommentService {
@@ -19,11 +24,14 @@ public class StudyCommentService {
     private final StudyCommentRepository studyCommentRepository;
     private final MemberService memberService;
     private final StudyService studyService;
+    private final StudyCommentMapper studyCommentMapper;
 
-    public StudyCommentService(StudyCommentRepository studyCommentRepository, MemberService memberService, StudyService studyService) {
+    public StudyCommentService(StudyCommentRepository studyCommentRepository, MemberService memberService,
+                               StudyService studyService, StudyCommentMapper studyCommentMapper) {
         this.studyCommentRepository = studyCommentRepository;
         this.memberService = memberService;
         this.studyService = studyService;
+        this.studyCommentMapper = studyCommentMapper;
     }
 
     // 댓글 등록
@@ -55,6 +63,17 @@ public class StudyCommentService {
     // 모든 댓글 조회
     public List<StudyComment> getAllStudyComments() {
         return studyCommentRepository.findAll();
+    }
+
+    public List<StudyCommentResponseDto> findComments() {
+        List<StudyComment> comments = studyCommentRepository.findAll();
+        return studyCommentMapper.studyCommentToStudyCommentResponseDtos(comments);
+    }
+
+    // 한 게시물에 달린 댓글들 찾기
+    public List<StudyCommentResponseDto> findCommentsByStudyId(long studyId) {
+        List<StudyCommentResponseDto> studyCommentResponseDtos = findComments();
+        return studyCommentResponseDtos.stream().filter(d -> d.getStudyId() == studyId).collect(Collectors.toList());
     }
 
     // 댓글 삭제
