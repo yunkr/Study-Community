@@ -70,6 +70,15 @@ public class PostCommentController {
         return new ResponseEntity<>(postComments, HttpStatus.OK);
     }
 
+    // 한 게시물에 달린 댓글들 찾기(Get)
+    @GetMapping("post/{post-id}")
+    public ResponseEntity<?> getCommentsByPostId(@PathVariable("post-id") @Positive long postId) {
+
+        List<PostCommentResponseDto> response = postCommentService.findCommentsByPostId(postId);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
     // 댓글 삭제(Delete)
     @DeleteMapping("/{postComment-id}")
     public ResponseEntity<?> deletePostComment(@PathVariable("postComment-id") @Positive long postCommentId) {

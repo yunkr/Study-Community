@@ -5,8 +5,12 @@ import StudyCommunity.postcomment.dto.PostCommentPatchDto;
 import StudyCommunity.postcomment.dto.PostCommentPostDto;
 import StudyCommunity.postcomment.dto.PostCommentResponseDto;
 import StudyCommunity.postcomment.entity.PostComment;
+import StudyCommunity.study.dto.StudyResponseDto;
 import StudyCommunity.study.entity.Study;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Mapper
 public interface PostCommentMapper {
@@ -54,6 +58,12 @@ public interface PostCommentMapper {
         postCommentResponseDto.setLastModifiedAt(postComment.getLastModifiedAt());
 
         return postCommentResponseDto;
+    }
+
+    default List<PostCommentResponseDto> postCommentToPostCommentResponseDtos(List<PostComment> postComments) {
+        return postComments.stream()
+                .map(this::postCommentToPostCommentResponseDto)
+                .collect(Collectors.toList());
     }
 
 }

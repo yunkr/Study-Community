@@ -6,12 +6,15 @@ import StudyCommunity.member.entity.Member;
 import StudyCommunity.member.service.MemberService;
 import StudyCommunity.post.entity.Post;
 import StudyCommunity.post.service.PostService;
+import StudyCommunity.postcomment.dto.PostCommentResponseDto;
 import StudyCommunity.postcomment.entity.PostComment;
+import StudyCommunity.postcomment.mapper.PostCommentMapper;
 import StudyCommunity.postcomment.repository.PostCommentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PostCommentService {
@@ -19,11 +22,14 @@ public class PostCommentService {
     private final PostCommentRepository postCommentRepository;
     private final PostService postService;
     private final MemberService memberService;
+    private final PostCommentMapper postCommentMapper;
 
-    public PostCommentService(PostCommentRepository postCommentRepository, PostService postService, MemberService memberService) {
+    public PostCommentService(PostCommentRepository postCommentRepository, PostService postService,
+                              MemberService memberService, PostCommentMapper postCommentMapper) {
         this.postCommentRepository = postCommentRepository;
         this.postService = postService;
         this.memberService = memberService;
+        this.postCommentMapper = postCommentMapper;
     }
 
     // 댓글 등록
@@ -55,6 +61,17 @@ public class PostCommentService {
     // 모든 댓글 조회
     public List<PostComment> getAllPostComments() {
         return postCommentRepository.findAll();
+    }
+
+    public List<PostCommentResponseDto> findComments() {
+        List<PostComment> comments = postCommentRepository.findAll();
+        return postCommentMapper.postCommentToPostCommentResponseDtos(comments);
+    }
+
+    // 한 게시물에 달린 댓글들 찾기
+    public List<PostCommentResponseDto> findCommentsByPostId(long postId) {
+        List<PostCommentResponseDto> postCommentResponseDtos = findComments();
+        return postCommentResponseDtos.stream().filter(d -> d.getPostId() == postId).collect(Collectors.toList());
     }
 
     // 댓글 삭제
