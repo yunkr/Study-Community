@@ -16,8 +16,8 @@ import java.util.Set;
 @NoArgsConstructor
 public class StudyPostDto {
 
-//    @Positive
-//    private long memberId;
+    @Positive
+    private long memberId;
 
     @Positive
     private long studyCategoryId;
@@ -51,11 +51,11 @@ public class StudyPostDto {
     private LocalDateTime createdAt;
     private LocalDateTime lastModifiedAt;
 
-//    public Member getMember() {
-//        Member member = new Member();
-//        member.setMemberId(memberId);
-//        return member;
-//    }
+    public Member getMember() {
+        Member member = new Member();
+        member.setMemberId(memberId);
+        return member;
+    }
 
     public StudyCategory getStudyCategory() {
         StudyCategory studyCategory = new StudyCategory();

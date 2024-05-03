@@ -4,8 +4,6 @@ import StudyCommunity.exception.BusinessLogicException;
 import StudyCommunity.exception.ExceptionCode;
 import StudyCommunity.member.entity.Member;
 import StudyCommunity.member.service.MemberService;
-import StudyCommunity.post.entity.Post;
-import StudyCommunity.postTag.PostTag;
 import StudyCommunity.study.entity.Study;
 import StudyCommunity.study.repository.StudyRepository;
 import StudyCommunity.studyTag.StudyTag;
@@ -17,7 +15,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,7 +33,7 @@ public class StudyService {
     // 스터디 등록
     public Study createStudy(Study study) {
 
-        //verifyMember(study);
+        verifyMember(study);
 
         for (StudyTag studyTag : study.getStudyTags()) {
             Tag tag = studyTag.getTag();
@@ -101,16 +98,16 @@ public class StudyService {
         studyRepository.deleteById(studyId);
     }
 
-//    // member 존재하는지 확인
-//    public void verifyMember(Study study) {
-//        Member member = study.getMember();
-//        if (member == null) {
-//            throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND); // 적절한 예외 처리 추가
-//        }
-//
-//        // member가 null이 아닌 경우에만 setId 메서드를 호출하여 memberId 설정
-//        study.setMember(memberService.findMember(member.getMemberId()));
-//    }
+    // member 존재하는지 확인
+    public void verifyMember(Study study) {
+        Member member = study.getMember();
+        if (member == null) {
+            throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND); // 적절한 예외 처리 추가
+        }
+
+        // member가 null이 아닌 경우에만 setId 메서드를 호출하여 memberId 설정
+        study.setMember(memberService.findMember(member.getMemberId()));
+    }
 
     // 스터디 존재하는지 확인
     public Study findverifyStudy(long studyId) {

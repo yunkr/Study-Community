@@ -2,7 +2,6 @@ package StudyCommunity.study.controller;
 
 import StudyCommunity.dto.MultiResponseDto;
 import StudyCommunity.dto.SingleResponseDto;
-import StudyCommunity.post.entity.Post;
 import StudyCommunity.study.dto.StudyPatchDto;
 import StudyCommunity.study.dto.StudyPostDto;
 import StudyCommunity.study.dto.StudyResponseDto;

@@ -15,7 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class PostResponseDto {
 
-//    private long memberId;
+    private long memberId;
 
     private long postId;
 
@@ -27,8 +27,8 @@ public class PostResponseDto {
 
     private Set<String> tags;
 
-//    // 게시글 상태
-//    private Post.PostStatus postStatus;
+    // 게시글 상태
+    private Post.PostStatus postStatus;
 
 
     private LocalDateTime createdAt;

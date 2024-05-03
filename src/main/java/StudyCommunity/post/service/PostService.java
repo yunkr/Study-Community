@@ -1,13 +1,12 @@
 package StudyCommunity.post.service;
 
-import StudyCommunity.note.entity.Note;
-import StudyCommunity.post.entity.Post;
-import StudyCommunity.postTag.PostTag;
-import StudyCommunity.post.repository.PostRepository;
 import StudyCommunity.exception.BusinessLogicException;
 import StudyCommunity.exception.ExceptionCode;
 import StudyCommunity.member.entity.Member;
 import StudyCommunity.member.service.MemberService;
+import StudyCommunity.post.entity.Post;
+import StudyCommunity.post.repository.PostRepository;
+import StudyCommunity.postTag.PostTag;
 import StudyCommunity.tag.entity.Tag;
 import StudyCommunity.tag.repository.TagRepository;
 import org.springframework.data.domain.Page;
@@ -34,7 +33,7 @@ public class PostService {
     // 게시글 등록
     public Post createPost(Post post) {
 
-        //verifyMember(post);
+        verifyMember(post);
 
         for (PostTag postHashTag : post.getPostTags()) {
             Tag tag = postHashTag.getTag();

@@ -21,9 +21,9 @@ public class StudyComment extends Auditable {
     @Column
     private String content;
 
-//    @ManyToOne
-//    @JoinColumn(name = "member_id")
-//    private Member member;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @ManyToOne
     @JoinColumn(name = "study_id")

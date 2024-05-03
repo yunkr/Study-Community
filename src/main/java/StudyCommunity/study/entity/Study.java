@@ -59,9 +59,9 @@ public class Study extends Auditable {
     @Column(columnDefinition = "bigint default 0", nullable = false)
     private long viewCount;
 
-//    @ManyToOne
-//    @JoinColumn(name = "member_id")
-//    private Member member;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @ManyToOne
     @JoinColumn(name = "study_category")

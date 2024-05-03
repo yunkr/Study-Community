@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class StudyCommentResponseDto {
 
-//    private long memberId;
+    private long memberId;
     private long studyId;
 
     private long studyCommentId;

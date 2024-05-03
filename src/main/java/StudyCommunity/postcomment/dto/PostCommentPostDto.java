@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class PostCommentPostDto {
 
-//    @Positive
-//    private long memberId;
+    @Positive
+    private long memberId;
 
     @Positive
     private long postId;
@@ -29,11 +29,11 @@ public class PostCommentPostDto {
     private LocalDateTime lastModifiedAt;
 
 
-//    public Member getMember() {
-//        Member member = new Member();
-//        member.setMemberId(memberId);
-//        return member;
-//    }
+    public Member getMember() {
+        Member member = new Member();
+        member.setMemberId(memberId);
+        return member;
+    }
 
     public Post getPost() {
         Post post = new Post();

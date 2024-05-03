@@ -5,7 +5,6 @@ import StudyCommunity.postcomment.dto.PostCommentPatchDto;
 import StudyCommunity.postcomment.dto.PostCommentPostDto;
 import StudyCommunity.postcomment.dto.PostCommentResponseDto;
 import StudyCommunity.postcomment.entity.PostComment;
-import StudyCommunity.study.dto.StudyResponseDto;
 import StudyCommunity.study.entity.Study;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -17,14 +16,14 @@ public interface PostCommentMapper {
 
     default PostComment postCommentPostDtoToPostComment(PostCommentPostDto postCommentPostDto) {
 
-        //Member member = new Member();
+        Member member = new Member();
         Study study = new Study();
         PostComment postComment = new PostComment();
 
-        //member.setMemberId(member.getMemberId());
+        member.setMemberId(member.getMemberId());
         study.setStudyId(study.getStudyId());
 
-        //postComment.setMember(postCommentPostDto.getMember());
+        postComment.setMember(postCommentPostDto.getMember());
         postComment.setPost(postCommentPostDto.getPost());
 
         postComment.setContent(postCommentPostDto.getContent());
@@ -47,7 +46,7 @@ public interface PostCommentMapper {
 
         PostCommentResponseDto postCommentResponseDto = new PostCommentResponseDto();
 
-        //postCommentResponseDto.setMemberId(postComment.getMember().getMemberId());
+        postCommentResponseDto.setMemberId(postComment.getMember().getMemberId());
         postCommentResponseDto.setPostId(postComment.getPost().getPostId());
 
         postCommentResponseDto.setPostCommentId(postComment.getPostCommentId());

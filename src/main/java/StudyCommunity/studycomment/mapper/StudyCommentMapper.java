@@ -17,14 +17,14 @@ public interface StudyCommentMapper {
 
     default StudyComment studyCommentPostDtoToStudyComment(StudyCommentPostDto studyCommentPostDto) {
 
-        //Member member = new Member();
+        Member member = new Member();
         Study study = new Study();
         StudyComment studyComment = new StudyComment();
 
-        //member.setMemberId(member.getMemberId());
+        member.setMemberId(member.getMemberId());
         study.setStudyId(study.getStudyId());
 
-        //studyComment.setMember(studyCommentPostDto.getMember());
+        studyComment.setMember(studyCommentPostDto.getMember());
         studyComment.setStudy(studyCommentPostDto.getStudy());
 
         studyComment.setContent(studyCommentPostDto.getContent());
@@ -47,7 +47,7 @@ public interface StudyCommentMapper {
 
         StudyCommentResponseDto studyCommentResponseDto = new StudyCommentResponseDto();
 
-        //studyCommentResponseDto.setMemberId(studyComment.getMember().getMemberId());
+        studyCommentResponseDto.setMemberId(studyComment.getMember().getMemberId());
         studyCommentResponseDto.setStudyId(studyComment.getStudy().getStudyId());
 
         studyCommentResponseDto.setStudyCommentId(studyComment.getStudyCommentId());

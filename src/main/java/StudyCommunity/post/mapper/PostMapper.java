@@ -1,6 +1,5 @@
 package StudyCommunity.post.mapper;
 
-import StudyCommunity.member.dto.MemberResponseDto;
 import StudyCommunity.member.entity.Member;
 import StudyCommunity.post.dto.PostPatchDto;
 import StudyCommunity.post.dto.PostPostDto;
@@ -23,10 +22,10 @@ public interface PostMapper {
 
         member.setMemberId(member.getMemberId());
 
-        //post.setMember(postPostDto.getMember());
+        post.setMember(postPostDto.getMember());
         post.setTitle(postPostDto.getTitle());
         post.setContent(postPostDto.getContent());
-        //post.setPostStatus(postPostDto.getPostStatus());
+        post.setPostStatus(postPostDto.getPostStatus());
 
         if (postPostDto.getTags() != null) {
             for (String tag : postPostDto.getTags()) {
@@ -58,13 +57,13 @@ public interface PostMapper {
 
         PostResponseDto postResponseDto = new PostResponseDto();
 
-        //postResponseDto.setMemberId(post.getMember().getMemberId());
+        postResponseDto.setMemberId(post.getMember().getMemberId());
 
         postResponseDto.setPostId(post.getPostId());
         postResponseDto.setTitle(post.getTitle());
         postResponseDto.setContent(post.getContent());
         postResponseDto.setViewCount(post.getViewCount());
-        //postResponseDto.setPostStatus(post.getPostStatus());
+        postResponseDto.setPostStatus(post.getPostStatus());
         postResponseDto.setCreatedAt(post.getCreatedAt());
         postResponseDto.setLastModifiedAt(post.getLastModifiedAt());
 
