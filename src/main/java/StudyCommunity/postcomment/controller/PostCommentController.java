@@ -18,6 +18,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/postComments")
 public class PostCommentController {
 

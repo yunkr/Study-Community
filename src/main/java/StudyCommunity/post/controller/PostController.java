@@ -59,12 +59,24 @@ public class PostController {
     // 게시글 조회(Get)
     @GetMapping("/{post-id}")
     public ResponseEntity<?> getPost(@PathVariable("post-id") @Positive long postId) {
-        Post post = postService.findPost(postId);
+        Post post = postService.findPostViewCount(postId);
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(postMapper.postToPostResponseDto(post))
                 , HttpStatus.OK);
     }
+
+    // 게시글 조회수 증가 조회(Get)
+    @GetMapping("/view-count/{post-id}")
+    public ResponseEntity<?> getPostViewCount(@PathVariable("post-id") @Positive long postId) {
+        Post post = postService.findPostViewCount(postId);
+
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(postMapper.postToPostResponseDto(post))
+                , HttpStatus.OK);
+    }
+
+
 
     // 모든 게시글 조회(Get)
     @GetMapping

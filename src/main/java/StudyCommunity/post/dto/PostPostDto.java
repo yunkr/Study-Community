@@ -18,8 +18,8 @@ import java.util.Set;
 @NoArgsConstructor
 public class PostPostDto {
 
-    @Positive
-    private long memberId;
+//    @Positive
+//    private long memberId;
 
     @NotBlank
     private String title;
@@ -29,17 +29,17 @@ public class PostPostDto {
 
     private Set<String> tags;
 
-    // 게시글 상태
-    private Post.PostStatus postStatus;
+//    // 게시글 상태
+//    private Post.PostStatus postStatus;
 
 
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 
-    public Member getMember() {
-        Member member = new Member();
-        member.setMemberId(memberId);
-        return member;
-    }
+//    public Member getMember() {
+//        Member member = new Member();
+//        member.setMemberId(memberId);
+//        return member;
+//    }
 
 }

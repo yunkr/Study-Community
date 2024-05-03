@@ -1,5 +1,6 @@
 package StudyCommunity.post.service;
 
+import StudyCommunity.note.entity.Note;
 import StudyCommunity.post.entity.Post;
 import StudyCommunity.postTag.PostTag;
 import StudyCommunity.post.repository.PostRepository;
@@ -15,7 +16,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,7 +34,7 @@ public class PostService {
     // 게시글 등록
     public Post createPost(Post post) {
 
-        verifyMember(post);
+        //verifyMember(post);
 
         for (PostTag postHashTag : post.getPostTags()) {
             Tag tag = postHashTag.getTag();
@@ -61,6 +61,7 @@ public class PostService {
         return postRepository.save(findPost);
     }
 
+    /*
     // 게시글 조회
     public Post findPost(long postId) {
         Post findPost = postRepository.findById(postId).orElseThrow(() ->
@@ -74,6 +75,26 @@ public class PostService {
         postRepository.save(findPost);
 
         return findPost;
+    }
+     */
+
+    // 게시글 조회
+    public Post findPost(long postId) {
+        Post findPost = postRepository.findById(postId).orElseThrow(() ->
+                new BusinessLogicException(ExceptionCode.NOTE_NOT_FOUND));
+
+        return findPost;
+    }
+
+    // 게시글 조회
+    public Post findPostViewCount(long postId) {
+
+        Post findPost = findVerifyPost(postId);
+
+        // 게시글 조회수 증가
+        findPost.setViewCount(findPost.getViewCount() + 1);
+
+        return postRepository.save(findPost);
     }
 
     /*
@@ -92,17 +113,6 @@ public class PostService {
     public void deletePost(long postId) {
         postRepository.deleteById(postId);
     }
-
-    /*
-    // 게시글 조회수
-    public Post increaseViewCount(long postId) {
-
-        Post findPost = findVerifyPost(postId);
-        findPost.setViewCount(findPost.getViewCount() + 1);
-
-        return postRepository.save(findPost);
-    }
-     */
 
 
     // member 존재하는지 확인

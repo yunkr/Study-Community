@@ -14,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class StudyResponseDto {
 
-    private long memberId;
+//    private long memberId;
     private long studyCategoryId;
     private long studyId;
 
@@ -30,6 +30,7 @@ public class StudyResponseDto {
     private long viewCount;
 
     private Set<String> tags;
+    private String studyCategoryName;
 
     private LocalDateTime createdAt;
     private LocalDateTime lastModifiedAt;

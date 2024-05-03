@@ -21,14 +21,14 @@ public interface StudyMapper {
 
     default Study studyPostDtoToStudy(StudyPostDto studyPostDto) {
 
-        Member member = new Member();
+        //Member member = new Member();
         StudyCategory studyCategory = new StudyCategory();
         Study study = new Study();
 
-        member.setMemberId(member.getMemberId());
+        //member.setMemberId(member.getMemberId());
         studyCategory.setStudyCategoryId(studyCategory.getStudyCategoryId());
 
-        study.setMember(studyPostDto.getMember());
+        //study.setMember(studyPostDto.getMember());
         study.setStudyCategory(studyPostDto.getStudyCategory());
 
         study.setTitle(studyPostDto.getTitle());
@@ -76,8 +76,9 @@ public interface StudyMapper {
 
         StudyResponseDto studyResponseDto = new StudyResponseDto();
 
-        studyResponseDto.setMemberId(study.getMember().getMemberId());
+        //studyResponseDto.setMemberId(study.getMember().getMemberId());
         studyResponseDto.setStudyCategoryId(study.getStudyCategory().getStudyCategoryId());
+        studyResponseDto.setStudyCategoryName(study.getStudyCategory().getStudyCategoryName());
 
         studyResponseDto.setStudyId(study.getStudyId());
 
