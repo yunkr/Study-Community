@@ -32,7 +32,8 @@ public class Post extends Auditable {
     private long viewCount;
 
     @Enumerated(EnumType.STRING)
-    private PostStatus postStatus;
+    @Column(nullable = false)
+    private PostStatus postStatus = PostStatus.POST_REGISTRATION;
 
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
@@ -44,14 +45,14 @@ public class Post extends Auditable {
     // 게시글 상태
     @Getter
     public enum PostStatus {
-        QUESTION_ANSWER_POST("질문&답변 게시글"),
-        THINKING_POST("고민 게시글");
+        POST_REGISTRATION("질문&답변 게시글 등록"),
+        POST_DELETE("질문&답변 게시글 삭제");
 
         private final String status;
 
         PostStatus(String status) {
             this.status = status;
         }
-
     }
+
 }

@@ -2,7 +2,6 @@ package StudyCommunity.study.entity;
 
 import StudyCommunity.audit.Auditable;
 import StudyCommunity.member.entity.Member;
-import StudyCommunity.postTag.PostTag;
 import StudyCommunity.studyTag.StudyTag;
 import StudyCommunity.studycategory.entity.StudyCategory;
 import jakarta.persistence.*;
@@ -59,6 +58,10 @@ public class Study extends Auditable {
     @Column(columnDefinition = "bigint default 0", nullable = false)
     private long viewCount;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Study.StudyStatus studyStatus = StudyStatus.Study_REGISTRATION;
+
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
@@ -69,5 +72,18 @@ public class Study extends Auditable {
 
     @OneToMany(mappedBy = "study", cascade = CascadeType.ALL)
     private Set<StudyTag> studyTags = new HashSet<>();
+
+    // 스터디 상태
+    @Getter
+    public enum StudyStatus {
+        Study_REGISTRATION("스터디 등록"),
+        Study_DELETE("스터디 삭제");
+
+        private final String status;
+
+        StudyStatus(String status) {
+            this.status = status;
+        }
+    }
 
 }

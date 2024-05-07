@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @NoArgsConstructor
 @Getter
 @Setter
@@ -17,7 +20,7 @@ public class Member extends Auditable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 250, nullable = false)
     private String password;
 
     @Column(length = 100, nullable = false)
@@ -27,12 +30,20 @@ public class Member extends Auditable {
     @Column(length = 100, nullable = false, unique = true)
     private String email;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles = new ArrayList<>();
+
 
     // 생성자
     public Member(String password, String email, String nickname) {
         this.password = password;
         this.email = email;
         this.nickname = nickname;
+    }
+
+    // OAuth 추가
+    public Member(String email) {
+        this.email = email;
     }
 
 }
