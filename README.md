@@ -80,7 +80,7 @@ Postman 시연
 https://www.erdcloud.com/d/cySJLYNBBhnwXtCDp
 <br>
 <br>
-<img src="https://github.com/yunkr/be-library-api/assets/99308074/54a69523-cde6-4035-9372-07e3a24078b0">
+<img src="https://github.com/yunkr/Study-Community/assets/99308074/409476bf-32fd-46cf-af5c-abd0cb23caa1">
 
 <br/>
 <br/>
