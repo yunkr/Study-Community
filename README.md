@@ -56,9 +56,8 @@
 <br/>
 
 **회원가입, 로그인**
-- Spring MVC 아키텍처를 활용하여 Upcycling CRUD(Create, Read, Update, Delete) 기능을 구현
-- Controller에서 HTTP 요청을 처리하여 모델과 뷰를 연결하였으며, 각각의 요청에 대응하는 핸들러 메서드를 정의하여 비즈니스 로직을 수행
-- 📂[[블로그 참고]](https://tmdgus416.tistory.com/184)
+- JWT(Json Web Token)을 활용하여 로그인 인증 기능을 구현
+- Spring Security를 활용하여 애플리케이션의 보안을 강화함
 
 <br>
 <br/>
