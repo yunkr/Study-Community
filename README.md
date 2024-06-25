@@ -69,8 +69,21 @@
 
 ## 📸 구현 결과
 
-Post 등록
-<img src="https://github.com/yunkr/Study-Community/assets/99308074/a3662684-4dfe-48a0-8eea-a66c8e890b89">
+## 📸 화면 구성
+
+|Post 페이지|Post 등록|
+|:---:|:---:|
+|![MAINPAGE](https://github.com/yunkr/Study-Community/assets/99308074/153d63fc-5634-434d-80a0-93012ef37144)|![signup_login](https://github.com/codestates-seb/seb44_main_021/assets/99308074/4455e006-1cae-4e2c-8408-6263922ae2f3)|
+|<b>업사이클링 페이지</b>|<b>업사이클링 펀딩 글 등록</b>|
+|![upcycling](https://github.com/codestates-seb/seb44_main_021/assets/99308074/3af83feb-b433-41a0-b3b1-059360f29924)|![2023_07_25_00_10_57_249 mp4_20230725_002629](https://github.com/codestates-seb/seb44_main_021/assets/99308074/fdd0ce8e-7f46-4828-9eb1-01adba485dee)|
+|<b>업사이클링 펀딩 글 확인</b>|<b>업사이클링 펀딩 수정/삭제</b>|
+|![UPCYCLING1](https://github.com/codestates-seb/seb44_main_021/assets/99308074/d54c2c69-6b3a-438b-a862-300ab998f1f1)|![upcycling2](https://github.com/codestates-seb/seb44_main_021/assets/99308074/9af48b56-6bb6-497d-9484-f0a4e4106f3c)|
+|<b>상품 페이지</b>|<b>상품 등록</b>|
+|![upcycling](https://github.com/codestates-seb/seb44_main_021/assets/99308074/ce9b0ce6-241a-462e-af23-d60bd6ec3efd)|![fe6ba8af5e93dd3e](https://github.com/codestates-seb/seb44_main_021/assets/99308074/f217ce16-7b7f-4d2b-be07-5956889e2e08)|
+|<b>상품 확인</b>|<b>상품 수정/삭제</b>|
+|![ce3b139fe88a1391](https://github.com/codestates-seb/seb44_main_021/assets/99308074/44afa4a3-eac6-4583-9c9d-a7816974e64e)|![debf89bd9e9cb7bf](https://github.com/codestates-seb/seb44_main_021/assets/99308074/739b9603-bb2a-4262-82e2-293a1a951189)|
+|<b>마이페이지</b>|<b>About</b>|
+|![mypage](https://github.com/codestates-seb/seb44_main_021/assets/99308074/f83d520d-2b90-4fac-ad4e-8e2e7a3701f5)|![about](https://github.com/codestates-seb/seb44_main_021/assets/99308074/12fab642-e582-47a8-bb2f-38e87c987c8d)|
 
 <br>
 <br/>
