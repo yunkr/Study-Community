@@ -73,15 +73,15 @@
 
 |Post 페이지|Post 등록|
 |:---:|:---:|
-|![MAINPAGE](https://github.com/yunkr/Study-Community/assets/99308074/153d63fc-5634-434d-80a0-93012ef37144)|![signup_login](https://github.com/codestates-seb/seb44_main_021/assets/99308074/4455e006-1cae-4e2c-8408-6263922ae2f3)|
-|<b>업사이클링 페이지</b>|<b>업사이클링 펀딩 글 등록</b>|
-|![upcycling](https://github.com/codestates-seb/seb44_main_021/assets/99308074/3af83feb-b433-41a0-b3b1-059360f29924)|![2023_07_25_00_10_57_249 mp4_20230725_002629](https://github.com/codestates-seb/seb44_main_021/assets/99308074/fdd0ce8e-7f46-4828-9eb1-01adba485dee)|
-|<b>업사이클링 펀딩 글 확인</b>|<b>업사이클링 펀딩 수정/삭제</b>|
-|![UPCYCLING1](https://github.com/codestates-seb/seb44_main_021/assets/99308074/d54c2c69-6b3a-438b-a862-300ab998f1f1)|![upcycling2](https://github.com/codestates-seb/seb44_main_021/assets/99308074/9af48b56-6bb6-497d-9484-f0a4e4106f3c)|
-|<b>상품 페이지</b>|<b>상품 등록</b>|
-|![upcycling](https://github.com/codestates-seb/seb44_main_021/assets/99308074/ce9b0ce6-241a-462e-af23-d60bd6ec3efd)|![fe6ba8af5e93dd3e](https://github.com/codestates-seb/seb44_main_021/assets/99308074/f217ce16-7b7f-4d2b-be07-5956889e2e08)|
-|<b>상품 확인</b>|<b>상품 수정/삭제</b>|
-|![ce3b139fe88a1391](https://github.com/codestates-seb/seb44_main_021/assets/99308074/44afa4a3-eac6-4583-9c9d-a7816974e64e)|![debf89bd9e9cb7bf](https://github.com/codestates-seb/seb44_main_021/assets/99308074/739b9603-bb2a-4262-82e2-293a1a951189)|
+|![POST PAGE](https://github.com/yunkr/Study-Community/assets/99308074/153d63fc-5634-434d-80a0-93012ef37144)|![CREATE POST](https://github.com/yunkr/Study-Community/assets/99308074/f0fae25b-8eb0-46ae-bf70-af0faaf73a42)|
+|<b>Study 페이지</b>|<b>Study 등록</b>|
+|![Study](https://github.com/yunkr/Study-Community/assets/99308074/6f4f5383-97de-4c1d-88df-09695a2a8584)|![Create Study](https://github.com/yunkr/Study-Community/assets/99308074/321ecb61-bf9f-4952-b47e-c4a95cdcd2a4)|
+|<b>Post Detail</b>|<b>Study Detail</b>|
+|![Post Detail](https://github.com/yunkr/Study-Community/assets/99308074/8dcb86f3-ad72-4f0f-baa1-af467394ccec)|![Study Detail](https://github.com/yunkr/Study-Community/assets/99308074/c2acb9bf-17e7-423e-b31d-7437874c1c1d)|
+|<b>좋아요</b>|<b>좋아요 취소</b>|
+|![Likes1](https://github.com/yunkr/Study-Community/assets/99308074/8dcb86f3-ad72-4f0f-baa1-af467394ccec)|![Likes2](https://github.com/yunkr/Study-Community/assets/99308074/9e9d2227-e1bf-4e54-bea6-90b79a1aa866)|
+|<b>Post 검색</b>|<b>Study 검색</b>|
+|![Post 검색](https://github.com/yunkr/Study-Community/assets/99308074/19c0c984-19e4-4fcd-adc2-b517de54358e)|![Study 검색](https://github.com/yunkr/Study-Community/assets/99308074/a6e03e10-775d-4a5a-b221-5617625b1908)|
 |<b>마이페이지</b>|<b>About</b>|
 |![mypage](https://github.com/codestates-seb/seb44_main_021/assets/99308074/f83d520d-2b90-4fac-ad4e-8e2e7a3701f5)|![about](https://github.com/codestates-seb/seb44_main_021/assets/99308074/12fab642-e582-47a8-bb2f-38e87c987c8d)|
 
