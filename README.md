@@ -67,8 +67,6 @@
 <br/>
 <br/>
 
-## 📸 구현 결과
-
 ## 📸 화면 구성
 
 |Post 페이지|Post 등록|
@@ -82,6 +80,8 @@
 |![Likes1](https://github.com/yunkr/Study-Community/assets/99308074/8dcb86f3-ad72-4f0f-baa1-af467394ccec)|![Likes2](https://github.com/yunkr/Study-Community/assets/99308074/ff497ff8-a217-4452-be5d-e6752a5af23a)|
 |<b>Post 검색</b>|<b>Study 검색</b>|
 |![Post 검색](https://github.com/yunkr/Study-Community/assets/99308074/19c0c984-19e4-4fcd-adc2-b517de54358e)|![Study 검색](https://github.com/yunkr/Study-Community/assets/99308074/a6e03e10-775d-4a5a-b221-5617625b1908)|
+
+🔗 [Study-Community Front](https://github.com/yunkr/Study-Community-Front)
 
 <br>
 <br/>
