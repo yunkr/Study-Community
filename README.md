@@ -67,10 +67,10 @@
 <br/>
 <br/>
 
-## 📸 구현 결과(Postman)
+## 📸 구현 결과
 
-Postman 시연
-- 📂[[블로그 참고]](https://tmdgus416.tistory.com/181)
+Post 등록
+<img src="https://github.com/yunkr/Study-Community/assets/99308074/a3662684-4dfe-48a0-8eea-a66c8e890b89">
 
 <br>
 <br/>
