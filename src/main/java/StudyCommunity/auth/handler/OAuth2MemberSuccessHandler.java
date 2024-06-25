@@ -57,14 +57,14 @@ public class OAuth2MemberSuccessHandler extends SimpleUrlAuthenticationSuccessHa
         redirect(request, response, member, authorities);  // Access Token과 Refresh Token을 생성해서 Frontend 애플리케이션에 전달하기 위해 Redirect
     }
 
-    private Member saveMember(String email, String displayName) {
+    private Member saveMember(String email, String nickname) {
         memberRepository.findByEmail(email).ifPresent(it ->
         {
             throw new BusinessLogicException(ExceptionCode.MEMBER_EXISTS, String.format("%s is duplicated 버그발생! OAuth2 핸들러 검사하시오.", email));
         });
         Member member = new Member();
         member.setEmail(email);
-        //member.setDisplayName(displayName);
+        member.setNickname(nickname);
 //       member.setProfileImage(profileImage);
         Member savedMember = memberRepository.save(member);
         List<String> roles = authorityUtils.createRoles(email);
@@ -95,7 +95,7 @@ public class OAuth2MemberSuccessHandler extends SimpleUrlAuthenticationSuccessHa
     private String delegateAccessToken(Member member, List<String> authorities) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("memberEmail", member.getEmail());
-        //claims.put("memberDisplayName", member.getDisplayName());
+        claims.put("memberNickName", member.getNickname());
         claims.put("roles", authorities);
 
         String subject = member.getEmail();
@@ -128,7 +128,8 @@ public class OAuth2MemberSuccessHandler extends SimpleUrlAuthenticationSuccessHa
                 .newInstance()
                 .scheme("http")
                 .host("localhost")
-                .port(3000)
+                //.port(3000)
+                .path("/receive-token.html")
                 .queryParams(queryParams)
                 .build()
                 .toUri();

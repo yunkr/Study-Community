@@ -20,7 +20,7 @@ public class Member extends Auditable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
 
-    @Column(length = 250, nullable = false)
+    @Column //(length = 250, nullable = false)
     private String password;
 
     @Column(length = 100, nullable = false)
