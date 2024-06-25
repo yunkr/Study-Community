@@ -79,11 +79,9 @@
 |<b>Post Detail</b>|<b>Study Detail</b>|
 |![Post Detail](https://github.com/yunkr/Study-Community/assets/99308074/8dcb86f3-ad72-4f0f-baa1-af467394ccec)|![Study Detail](https://github.com/yunkr/Study-Community/assets/99308074/c2acb9bf-17e7-423e-b31d-7437874c1c1d)|
 |<b>좋아요</b>|<b>좋아요 취소</b>|
-|![Likes1](https://github.com/yunkr/Study-Community/assets/99308074/8dcb86f3-ad72-4f0f-baa1-af467394ccec)|![Likes2](https://github.com/yunkr/Study-Community/assets/99308074/9e9d2227-e1bf-4e54-bea6-90b79a1aa866)|
+|![Likes1](https://github.com/yunkr/Study-Community/assets/99308074/8dcb86f3-ad72-4f0f-baa1-af467394ccec)|![Likes2](https://github.com/yunkr/Study-Community/assets/99308074/ff497ff8-a217-4452-be5d-e6752a5af23a)|
 |<b>Post 검색</b>|<b>Study 검색</b>|
 |![Post 검색](https://github.com/yunkr/Study-Community/assets/99308074/19c0c984-19e4-4fcd-adc2-b517de54358e)|![Study 검색](https://github.com/yunkr/Study-Community/assets/99308074/a6e03e10-775d-4a5a-b221-5617625b1908)|
-|<b>마이페이지</b>|<b>About</b>|
-|![mypage](https://github.com/codestates-seb/seb44_main_021/assets/99308074/f83d520d-2b90-4fac-ad4e-8e2e7a3701f5)|![about](https://github.com/codestates-seb/seb44_main_021/assets/99308074/12fab642-e582-47a8-bb2f-38e87c987c8d)|
 
 <br>
 <br/>
