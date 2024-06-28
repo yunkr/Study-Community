@@ -95,13 +95,3 @@ https://www.erdcloud.com/d/cySJLYNBBhnwXtCDp
 
 <br/>
 <br/>
-
-## 📃 Docs
-🔗 [사용자 요구사항 정의서](https://tmdgus416.tistory.com/179)
-<br>
-
-<br/>
-<br/>
-
-
-
